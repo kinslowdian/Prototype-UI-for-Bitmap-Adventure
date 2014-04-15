@@ -94,8 +94,16 @@
 			
 			#bot
 			{
+/*
 				-webkit-transition	: -webkit-transform 0.2s ease-in-out;
 				transition			: transform 0.2s ease-in-out;
+*/
+			}
+			
+			.tween-bot
+			{
+				-webkit-transition	: -webkit-transform 0.2s ease-in-out;
+				transition			: transform 0.2s ease-in-out;				
 			}
 			
 			#pre
@@ -217,10 +225,15 @@
 		
 		<script type="text/javascript" src="_assets/_js/_jquery/jquery-2.0.3.js"></script>
 		<script type="text/javascript" src="_assets/_js/_collision/jquery-collision.js"></script>
+
+		<script type="text/javascript" src="_assets/_js/Init.js"></script>
+		<script type="text/javascript" src="_assets/_js/ControlPort.js"></script>		
 		
+<!--
 		<script type="text/javascript" src="_assets/_js/touch.js"></script>	
 		<script type="text/javascript" src="_assets/_js/bot.js"></script>
-		<script type="text/javascript" src="_assets/_js/hit.js"></script>		
+		<script type="text/javascript" src="_assets/_js/hit.js"></script>
+-->		
 		
 	</head>
 	
@@ -246,7 +259,7 @@
 					
 					<div id="pre" class="collideCheck-player"></div>
 					
-					<div id="bot">
+					<div id="bot" class="tween-bot">
 						
 						<div></div>
 					
