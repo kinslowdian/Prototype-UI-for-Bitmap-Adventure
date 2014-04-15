@@ -29,8 +29,6 @@
 	{
 		CONTROL_SIGNAL = {};
 		
-		CONTROL_SIGNAL.data = {};
-		
 		if(deviceTest.toString() === "object")
 		{
 			CONTROL_SIGNAL.enableTouch = true;
@@ -44,14 +42,15 @@
 			
 			trace("DEVICE === KEYBOARD");
 		
-			$("#touchPad").remove();
+			// $("#touchPad").remove();
 		}
 		
+		CONTROL_SIGNAL.data = {};
 		
 		if(CONTROL_SIGNAL.enableTouch)
 		{
-			CONTROL_SIGNAL.data.x_measure = $("#touchPad-full_L").width();
-			CONTROL_SIGNAL.data.y_measure = $("#touchPad-full_R").height();
+			CONTROL_SIGNAL.data.x_measure = $("#touchPad-full").width();
+			CONTROL_SIGNAL.data.y_measure = $("#touchPad-full").height();
 			
 			CONTROL_SIGNAL.firstTouch = true;
 		}
@@ -88,16 +87,12 @@
 		{
 			if(CONTROL_SIGNAL.enableTouch)
 			{
-				$(window)[0].addEventListener("touchstart", touchDisplay, false);
-				$(window)[0].addEventListener("touchend", touchDisplay, false);
+				// $(window)[0].addEventListener("touchstart", touchDisplay, false);
+				// $(window)[0].addEventListener("touchend", touchDisplay, false);
 				
-				$("#touchPad-full_L")[0].addEventListener("touchstart", touchFind, false);
-				$("#touchPad-full_L")[0].addEventListener("touchmove", touchFind, false);
-				$("#touchPad-full_L")[0].addEventListener("touchend", touchFind, false);
-					
-				$("#touchPad-full_R")[0].addEventListener("touchstart", touchFind, false);
-				$("#touchPad-full_R")[0].addEventListener("touchmove", touchFind, false);
-				$("#touchPad-full_R")[0].addEventListener("touchend", touchFind, false);
+				$("#touchPad-full")[0].addEventListener("touchstart", touchFind, false);
+				$("#touchPad-full")[0].addEventListener("touchmove", touchFind, false);
+				$("#touchPad-full")[0].addEventListener("touchend", touchFind, false);
 				
 				$("#touchPad").css("opacity", 1);	
 			}
@@ -113,16 +108,12 @@
 		{
 			if(CONTROL_SIGNAL.enableTouch)
 			{
-				$(window)[0].removeEventListener("touchstart", touchDisplay, false);
-				$(window)[0].removeEventListener("touchend", touchDisplay, false);
+				// $(window)[0].removeEventListener("touchstart", touchDisplay, false);
+				// $(window)[0].removeEventListener("touchend", touchDisplay, false);
 				
-				$("#touchPad-full_L")[0].removeEventListener("touchstart", touchFind, false);
-				$("#touchPad-full_L")[0].removeEventListener("touchmove", touchFind, false);
-				$("#touchPad-full_L")[0].removeEventListener("touchend", touchFind, false);
-					
-				$("#touchPad-full_R")[0].removeEventListener("touchstart", touchFind, false);
-				$("#touchPad-full_R")[0].removeEventListener("touchmove", touchFind, false);
-				$("#touchPad-full_R")[0].removeEventListener("touchend", touchFind, false);
+				$("#touchPad-full")[0].removeEventListener("touchstart", touchFind, false);
+				$("#touchPad-full")[0].removeEventListener("touchmove", touchFind, false);
+				$("#touchPad-full")[0].removeEventListener("touchend", touchFind, false);
 				
 				$("#touchPad").css("opacity", 0);	
 			}
@@ -144,9 +135,8 @@
 		
 		if(CONTROL_SIGNAL.enableTouch)
 		{
-			CONTROL_SIGNAL.data.axisListen = "";
-			CONTROL_SIGNAL.data.controlPercent = 0;
-			CONTROL_SIGNAL.data.eventOffset = 0;	
+			CONTROL_SIGNAL.data.x_percent = 0;
+			CONTROL_SIGNAL.data.y_percent = 0;	
 			
 			touchFeedback();
 		}
@@ -178,36 +168,22 @@
 		
 		if(event.type === "touchstart" || event.type === "touchmove")
 		{
-			if(!CONTROL_SIGNAL.data.axisListen) //  === "NONE"
+			if(!CONTROL_SIGNAL.data.offset) //  === "NONE"
 			{
-				CONTROL_SIGNAL.data.axisListen = $("#" + event.target.id).attr("data-axis");
 				CONTROL_SIGNAL.data.offset = $("#" + event.target.id).offset();
 			}	
 			
 			CONTROL_SIGNAL.data.x = event.targetTouches[0].pageX - CONTROL_SIGNAL.data.offset.left;
 			CONTROL_SIGNAL.data.y = event.targetTouches[0].pageY - CONTROL_SIGNAL.data.offset.top;
 			
-			switch(CONTROL_SIGNAL.data.axisListen)
+			if(CONTROL_SIGNAL.data.x >= 0 && CONTROL_SIGNAL.data.x <= CONTROL_SIGNAL.data.x_measure)
 			{
-				case "x":
-				{
-					if(CONTROL_SIGNAL.data.x >= 0 && CONTROL_SIGNAL.data.x <= CONTROL_SIGNAL.data.x_measure)
-					{
-						CONTROL_SIGNAL.data.controlPercent = Math.round((CONTROL_SIGNAL.data.x / CONTROL_SIGNAL.data.x_measure) * 100);
-					}
-					
-					break;
-				}
-				
-				case "y":
-				{
-					if(CONTROL_SIGNAL.data.y >= 0 && CONTROL_SIGNAL.data.y <= CONTROL_SIGNAL.data.y_measure)
-					{
-						CONTROL_SIGNAL.data.controlPercent = Math.round((CONTROL_SIGNAL.data.y / CONTROL_SIGNAL.data.y_measure) * 100);
-					}
-					
-					break;
-				}
+				CONTROL_SIGNAL.data.x_percent = Math.round((CONTROL_SIGNAL.data.x / CONTROL_SIGNAL.data.x_measure) * 100);
+			}
+			
+			if(CONTROL_SIGNAL.data.y >= 0 && CONTROL_SIGNAL.data.y <= CONTROL_SIGNAL.data.y_measure)
+			{
+				CONTROL_SIGNAL.data.y_percent = Math.round((CONTROL_SIGNAL.data.y / CONTROL_SIGNAL.data.y_measure) * 100);
 			}
 			
 			touchControlSignal();
@@ -226,33 +202,40 @@
 	
 	function touchControlSignal()
 	{
-		if(CONTROL_SIGNAL.data.axisListen === "x")
+		if(CONTROL_SIGNAL.data.x_percent >= 33 && CONTROL_SIGNAL.data.x_percent < 66)
 		{
-			if(CONTROL_SIGNAL.data.controlPercent >= 0 && CONTROL_SIGNAL.data.controlPercent < 50)
-			{
-				CONTROL_SIGNAL.data.moveDirection = "LEFT";
-			}
-			
-			else
-			{
-				CONTROL_SIGNAL.data.moveDirection = "RIGHT";
-			}
-		}
-		
-		else
-		{
-			if(CONTROL_SIGNAL.data.controlPercent >= 0 && CONTROL_SIGNAL.data.controlPercent < 50)
+			if(CONTROL_SIGNAL.data.y_percent >= 0 && CONTROL_SIGNAL.data.y_percent < 33)
 			{
 				CONTROL_SIGNAL.data.moveDirection = "UP";
 			}
-			
-			else
-			{
-				CONTROL_SIGNAL.data.moveDirection = "DOWN";
-			}			
 		}
 		
-		touchFeedback();
+		if(CONTROL_SIGNAL.data.x_percent >= 33 && CONTROL_SIGNAL.data.x_percent < 66)
+		{
+			if(CONTROL_SIGNAL.data.y_percent >= 66 && CONTROL_SIGNAL.data.y_percent <= 100)
+			{
+				CONTROL_SIGNAL.data.moveDirection = "DOWN";
+			}
+		}
+		
+		if(CONTROL_SIGNAL.data.x_percent >= 0 && CONTROL_SIGNAL.data.x_percent < 33)
+		{
+			if(CONTROL_SIGNAL.data.y_percent >= 33 && CONTROL_SIGNAL.data.y_percent < 66)
+			{
+				CONTROL_SIGNAL.data.moveDirection = "LEFT";
+			}
+		}
+		
+		if(CONTROL_SIGNAL.data.x_percent >= 66 && CONTROL_SIGNAL.data.x_percent <= 100)
+		{
+			if(CONTROL_SIGNAL.data.y_percent >= 33 && CONTROL_SIGNAL.data.y_percent < 66)
+			{
+				CONTROL_SIGNAL.data.moveDirection = "RIGHT";
+			}
+		}	
+		
+		// WORK BACK IN
+		// touchFeedback();
 		
 		mapPlayer_update();
 	}
