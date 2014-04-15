@@ -42,7 +42,7 @@
 			
 			trace("DEVICE === KEYBOARD");
 		
-			// $("#touchPad").remove();
+			$("#touchPad").remove();
 		}
 		
 		CONTROL_SIGNAL.data = {};
@@ -87,8 +87,8 @@
 		{
 			if(CONTROL_SIGNAL.enableTouch)
 			{
-				// $(window)[0].addEventListener("touchstart", touchDisplay, false);
-				// $(window)[0].addEventListener("touchend", touchDisplay, false);
+				$(window)[0].addEventListener("touchstart", touchDisplay, false);
+				$(window)[0].addEventListener("touchend", touchDisplay, false);
 				
 				$("#touchPad-full")[0].addEventListener("touchstart", touchFind, false);
 				$("#touchPad-full")[0].addEventListener("touchmove", touchFind, false);
@@ -108,8 +108,8 @@
 		{
 			if(CONTROL_SIGNAL.enableTouch)
 			{
-				// $(window)[0].removeEventListener("touchstart", touchDisplay, false);
-				// $(window)[0].removeEventListener("touchend", touchDisplay, false);
+				$(window)[0].removeEventListener("touchstart", touchDisplay, false);
+				$(window)[0].removeEventListener("touchend", touchDisplay, false);
 				
 				$("#touchPad-full")[0].removeEventListener("touchstart", touchFind, false);
 				$("#touchPad-full")[0].removeEventListener("touchmove", touchFind, false);
@@ -234,8 +234,7 @@
 			}
 		}	
 		
-		// WORK BACK IN
-		// touchFeedback();
+		touchFeedback();
 		
 		mapPlayer_update();
 	}
