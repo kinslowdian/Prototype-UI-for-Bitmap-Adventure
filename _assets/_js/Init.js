@@ -31,3 +31,10 @@
 	{
 		mapPlayer_ready();
 	}
+	
+	function fire(event)
+	{
+		// alert("argh");
+		
+		touchOffsetUpdate();
+	}

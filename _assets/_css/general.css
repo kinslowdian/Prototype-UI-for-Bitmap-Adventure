@@ -1,3 +1,28 @@
+			.pixels_woods
+			{
+				background: url(../_img/tile_pineTreesMass_2x.png) repeat center top;
+				background-size: 240px 240px;				
+			}
+			
+			.pixels_bushes
+			{
+				background: url(../_img/tile_bush_2x.png) repeat center top;
+				background-size: 80px 80px;				
+			}
+			
+			.pixels_woods_alt
+			{
+				background: url(../_img/alt_trees.png) repeat center top;
+				background-size: 240px 240px;				
+			}
+			
+			.pixels_bushes_alt
+			{
+				background: url(../_img/alt_bush.png) repeat center top;
+				background-size: 80px 80px;				
+			}
+			
+			
 			*
 			{
 				margin: 0;
@@ -10,6 +35,11 @@
 				user-select: none;
 			}
 			
+			body
+			{
+				background: #dfdfd5;				
+			}
+			
 			#wrapper
 			{
 				width: 100%;
@@ -18,10 +48,6 @@
 				overflow: hidden;
 				
 				position: absolute;
-				
-				/* background: #dfdfd5; */
-				background: url(../_img/tile_pineTreesMass_2x.png) repeat center top;
-				background-size: 240px 240px;
 			}
 			
 			#content
@@ -134,7 +160,7 @@
 				width: 40px;
 				height: 320px;
 				
-				background: #494853;
+				/* background: #494853; */
 				
 				position: absolute;
 				
@@ -149,7 +175,7 @@
 				width: 80px;
 				height: 40px;
 				
-				background: #494853;
+				/* background: #494853; */
 				
 				position: absolute;
 				
@@ -164,7 +190,7 @@
 				width: 80px;
 				height: 80px;
 				
-				background: #f41b56;
+				/* background: #f41b56; */
 				
 				-webkit-transform	: translate(240px, 320px);
 				transform			: translate(240px, 320px);
@@ -182,7 +208,10 @@
 				z-index: 1;
 				
 				-webkit-transform	: translate(240px, 80px); 
-				transform			: translate(240px, 80px); 
+				transform			: translate(240px, 80px);
+				
+				-webkit-transition: opacity 0.5s ease;
+				transition: opacity 0.5s ease; 
 			}
 			
 			#enemy0 div
@@ -196,13 +225,48 @@
 				-webkit-animation	: tween-bot 0.2s linear infinite;
 				animation			: tween-bot 0.2s linear infinite;
 			}
-			
-			.collideCheck-player
-			{
-				
-			}
-			
-			.collideCheck-field
-			{
-				
-			}
+	
+	#edge0
+	{
+		width: 40px;
+		height: 480px;
+		
+		-webkit-transform: translate(-40px, 0);
+		transform: translate(-40px, 0);
+	}
+	
+	#edge1
+	{
+		width: 40px;
+		height: 480px;
+		
+		-webkit-transform: translate(320px, 0);
+		transform: translate(320px, 0);
+	}
+	
+	#edge2
+	{
+		width: 400px;
+		height: 40px;
+		
+		-webkit-transform: translate(-40px, -40px);
+		transform: translate(-40px, -40px);
+	}
+	
+	#edge3
+	{
+		width: 320px;
+		height: 40px;
+		
+		-webkit-transform: translate(0, 440px);
+		transform: translate(0, 440px);
+	}
+	
+	.edge
+	{	
+		position: absolute;
+		
+		z-index: 1;
+	}
+	
+	
