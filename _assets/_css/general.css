@@ -1,28 +1,3 @@
-			.pixels_woods
-			{
-				background: url(../_img/tile_pineTreesMass_2x.png) repeat center top;
-				background-size: 240px 240px;				
-			}
-			
-			.pixels_bushes
-			{
-				background: url(../_img/tile_bush_2x.png) repeat center top;
-				background-size: 80px 80px;				
-			}
-			
-			.pixels_woods_alt
-			{
-				background: url(../_img/alt_trees.png) repeat center top;
-				background-size: 240px 240px;				
-			}
-			
-			.pixels_bushes_alt
-			{
-				background: url(../_img/alt_bush.png) repeat center top;
-				background-size: 80px 80px;				
-			}
-			
-			
 			*
 			{
 				margin: 0;
@@ -35,11 +10,6 @@
 				user-select: none;
 			}
 			
-			body
-			{
-				background: #dfdfd5;				
-			}
-			
 			#wrapper
 			{
 				width: 100%;
@@ -48,6 +18,10 @@
 				overflow: hidden;
 				
 				position: absolute;
+				
+				/* background: #dfdfd5; */
+				background: url(../_img/tile_pineTreesMass_2x.png) repeat center top;
+				background-size: 240px 240px;
 			}
 			
 			#content
@@ -162,6 +136,9 @@
 				
 				/* background: #494853; */
 				
+				background: url(../_img/tile_bush_2x.png) repeat center top;
+				background-size: 80px 80px;
+				
 				position: absolute;
 				
 				-webkit-transform	: translate(40px, 40px);
@@ -177,6 +154,9 @@
 				
 				/* background: #494853; */
 				
+				background: url(../_img/tile_bush_2x.png) repeat center top;
+				background-size: 80px 80px;
+				
 				position: absolute;
 				
 				-webkit-transform	: translate(80px, 320px);
@@ -190,7 +170,7 @@
 				width: 80px;
 				height: 80px;
 				
-				/* background: #f41b56; */
+				background: #f41b56;
 				
 				-webkit-transform	: translate(240px, 320px);
 				transform			: translate(240px, 320px);
@@ -225,6 +205,18 @@
 				-webkit-animation	: tween-bot 0.2s linear infinite;
 				animation			: tween-bot 0.2s linear infinite;
 			}
+			
+/*
+			.collideCheck-player
+			{
+				
+			}
+			
+			.collideCheck-field
+			{
+				
+			}
+*/
 	
 	#edge0
 	{
@@ -263,10 +255,13 @@
 	}
 	
 	.edge
-	{	
+	{
+		/* background: yellow; */
+		
+		background: url(../_img/tile_bush_2x.png) repeat center top;
+		background-size: 80px 80px;
+		
 		position: absolute;
 		
 		z-index: 1;
 	}
-	
-	

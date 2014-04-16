@@ -7,6 +7,11 @@
 	
 	var deviceTest;
 	
+	function phoneRotate(event)
+	{
+		touchOffsetUpdate();
+	}
+	
 	function init()
 	{
 		deviceTest = deviceTouchTest();
@@ -30,11 +35,4 @@
 	function playerMapEntryEnd()
 	{
 		mapPlayer_ready();
-	}
-	
-	function fire(event)
-	{
-		// alert("argh");
-		
-		touchOffsetUpdate();
 	}

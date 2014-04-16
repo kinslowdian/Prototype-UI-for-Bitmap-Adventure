@@ -5,8 +5,6 @@
 	
 	var HIT_TEST;
 	
-	var stageChanged = false;
-	
 	function mapPlayer_init(playerMover, playerTween, hitTestArea)
 	{
 		MAP_PLAYER = {};
@@ -215,7 +213,9 @@
 		{
 			if(!CONTROL_SIGNAL.data.offset) //  === "NONE"
 			{
-				CONTROL_SIGNAL.data.offset = $("#" + event.target.id).offset();
+				// CONTROL_SIGNAL.data.offset = $("#" + event.target.id).offset();
+				
+				CONTROL_SIGNAL.data.offset = $("#touchPad-full").offset()
 			}	
 			
 			CONTROL_SIGNAL.data.x = event.targetTouches[0].pageX - CONTROL_SIGNAL.data.offset.left;
@@ -242,15 +242,6 @@
 			}
 			
 			control_reset();
-		}
-	}
-	
-	// CALLED FROM PHONE ROTATE EVENT (BUG FIX)
-	function touchOffsetUpdate()
-	{
-		if(CONTROL_SIGNAL.enableTouch)
-		{
-			CONTROL_SIGNAL.data.offset = $("#touchPad-full").offset();	
 		}
 	}
 	
@@ -292,6 +283,16 @@
 		
 		mapPlayer_update();
 	}
+	
+	// CALLED FROM PHONE ROTATE EVENT (BUG FIX)
+	
+	function touchOffsetUpdate()
+	{
+		if(CONTROL_SIGNAL.enableTouch)
+		{
+			CONTROL_SIGNAL.data.offset = $("#touchPad-full").offset();	
+		}
+	}	
 	
 	function touchFeedback()
 	{
@@ -509,9 +510,9 @@
 	
 	function gameStateChange(gotoState)
 	{
-		// MAP_PLAYER.listen = false;
+		MAP_PLAYER.listen = false;
 		
-		// control_switch(false);
+		control_switch(false);
 		
 		if(gotoState === "PORTAL")
 		{
@@ -520,7 +521,7 @@
 		
 		if(gotoState === "ENEMY")
 		{
-			$("#enemy0").css("opacity", 0);
+			
 		}
 	}
 	
@@ -553,16 +554,6 @@
 			if($("#" + hit_id).attr("data-npc") === "portal")
 			{
 				HIT_TEST.hit_portal = true;	
-				
-				// var list = $("#" + hit_id)[0].classList;
-				
-				if(!stageChanged)
-				{
-					stageChanged = true;
-					
-					stageChanger($("#" + hit_id)[0].classList);
-				}
-				// alert(list[0]);
 			}
 			
 			if($("#" + hit_id).attr("data-npc") === "enemy")
@@ -570,57 +561,9 @@
 				HIT_TEST.hit_enemy = true;	
 			}
 		}
-		
-		else
-		{
-			if(stageChanged)
-			{
-				stageChanged = false;
-			}
-		}
 	}	
 	
 	///////////////////////////////// --- HITTEST
-	
-	function stageChanger(recieved)
-	{
-		for(var i = 0; i < recieved.length; i++)
-		{
-			if(recieved[i] === "pixels_woods_alt")
-			{
-				$(".pixels_woods").each(function(k, item)
-				{
-					$(item).removeClass("pixels_woods").addClass("pixels_woods_alt");
-				});
-				
-				$(".pixels_bushes").each(function(k, item)
-				{
-					$(item).removeClass("pixels_bushes").addClass("pixels_bushes_alt");
-				});
-				
-				$("#portal0").removeClass("pixels_woods_alt").addClass("pixels_woods");
-				
-				break;
-			}
-			
-			if(recieved[i] === "pixels_woods")
-			{
-				$(".pixels_woods_alt").each(function(k, item)
-				{
-					$(item).removeClass("pixels_woods_alt").addClass("pixels_woods");
-				});
-				
-				$(".pixels_bushes_alt").each(function(k, item)
-				{
-					$(item).removeClass("pixels_bushes_alt").addClass("pixels_bushes");
-				});
-
-				$("#portal0").removeClass("pixels_woods").addClass("pixels_woods_alt");
-				
-				break;
-			}
-		}
-	}
 	
 	
 	
