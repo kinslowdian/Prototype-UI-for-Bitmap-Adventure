@@ -8,220 +8,7 @@
 		
 		<title>TOUCH!</title>
 		
-		<style type="text/css">
-			
-			*
-			{
-				margin: 0;
-				padding: 0;
-				
-				-webkit-touch-callout: none;
-				touch-callout: none;
-				
-				-webkit-user-select: none;
-				user-select: none;
-			}
-			
-			#wrapper
-			{
-				width: 100%;
-				height: 100%;
-				
-				overflow: hidden;
-				
-				position: absolute;
-				
-				/* background: #dfdfd5; */
-				background: url(tile_pineTreesMass_2x.png) repeat center top;
-				background-size: 240px 240px;
-			}
-			
-			#content
-			{
-				width: inherit;
-				height: inherit;
-				
-				position: relative;
-				
-				margin: 0 auto;
-			}
-			
-			#dev
-			{
-				width: inherit;
-				position: absolute;
-				z-index: 0;
-				top: 20px;
-				
-				visibility: hidden;
-			}
-			
-			#dev p
-			{
-				font-family: sans-serif;
-				font-weight: bolder;
-				font-size: 20px;
-				line-height: 4ex;
-				
-				text-align: center;
-				color: #ff0055;
-			}
-			
-			#bot-area
-			{
-				width: 320px;
-				height: inherit;
-				
-				position: absolute;
-				
-				left: 0; right: 0; top: 0; bottom: 0;
-				
-				margin: 0 auto;
-			}
-			
-			#bot, #pre
-			{
-				width: 40px;
-				height: 40px;
-				
-				position: absolute;
-				
-				z-index: 1;
-				
-				-webkit-transform	: translate(120px, 120px);
-				transform			: translate(120px, 120px);
-			}
-			
-			#bot
-			{
-/*
-				-webkit-transition	: -webkit-transform 0.2s ease-in-out;
-				transition			: transform 0.2s ease-in-out;
-*/
-			}
-			
-			.tween-bot
-			{
-				-webkit-transition	: -webkit-transform 0.2s ease-in-out;
-				transition			: transform 0.2s ease-in-out;				
-			}
-			
-			#pre
-			{
-				/* background: rgba(0, 0, 0, 0.2); */
-			}
-			
-			#bot div
-			{
-				width: inherit;
-				height: inherit;
-				
-				background: url(walk.png) no-repeat left top;
-				background-size: 40px 40px;
-				
-				-webkit-animation	: tween-bot 0.2s linear infinite;
-				animation			: tween-bot 0.2s linear infinite;
-			}
-			
-			@-webkit-keyframes tween-bot
-			{
-				0%		{-webkit-transform: translateY(0px);}
-				25%		{-webkit-transform: translateY(-2px);}
-				50% 	{-webkit-transform: translateY(0px);}
-				75%		{-webkit-transform: translateY(2px);}
-				100% 	{-webkit-transform: translateY(0px);}
-			}
-			
-			@keyframes tween-bot
-			{
-				0%		{transform: translateY(0px);}
-				25%		{transform: translateY(-2px);}
-				50% 	{transform: translateY(0px);}
-				75%		{transform: translateY(2px);}
-				100% 	{transform: translateY(0px);}
-			}
-			
-			#wall0
-			{
-				width: 40px;
-				height: 320px;
-				
-				background: #494853;
-				
-				position: absolute;
-				
-				-webkit-transform	: translate(40px, 40px);
-				transform			: translate(40px, 40px);
-				
-				z-index: 1;
-			}
-			
-			#wall1
-			{
-				width: 80px;
-				height: 40px;
-				
-				background: #494853;
-				
-				position: absolute;
-				
-				-webkit-transform	: translate(80px, 320px);
-				transform			: translate(80px, 320px);
-				
-				z-index: 1;
-			}
-			
-			#portal0
-			{
-				width: 80px;
-				height: 80px;
-				
-				background: #f41b56;
-				
-				-webkit-transform	: translate(240px, 320px);
-				transform			: translate(240px, 320px);
-				
-				z-index: 1;
-			}
-			
-			#enemy0
-			{
-				width: 40px;
-				height: 40px;
-				
-				background: #dfdfd5;
-				
-				z-index: 1;
-				
-				-webkit-transform	: translate(240px, 80px); 
-				transform			: translate(240px, 80px); 
-			}
-			
-			#enemy0 div
-			{
-				width: inherit;
-				height: inherit;
-				
-				background: url(wolf.png) no-repeat left top;
-				background-size: 40px 40px;
-				
-				-webkit-animation	: tween-bot 0.2s linear infinite;
-				animation			: tween-bot 0.2s linear infinite;
-			}
-			
-			.collideCheck-player
-			{
-				
-			}
-			
-			.collideCheck-field
-			{
-				
-			}
-			
-		</style>
-		
-		<link href="touch.css" rel="stylesheet" type="text/css">
+		<link href="_assets/_css/touch.css" rel="stylesheet" type="text/css">
 		
 		<script type="text/javascript" src="_assets/_js/_jquery/jquery-2.0.3.js"></script>
 		<script type="text/javascript" src="_assets/_js/_collision/jquery-collision.js"></script>
@@ -281,14 +68,20 @@
 						
 						<div class="touchPad-cont">
 							
-							<div class="touchPad-base pixels_touch-ui"></div>
+							<div class="touchPad-inner">
 							
-							<div id="touchPad-U-ind" class="touchPad-feedback"></div>
-							<div id="touchPad-D-ind" class="touchPad-feedback"></div>
-							<div id="touchPad-L-ind" class="touchPad-feedback"></div>
-							<div id="touchPad-R-ind" class="touchPad-feedback"></div>
+								<div class="touchPad-base pixels_touch-ui"></div>
+								
+								<div id="touchPad-U-ind" class="touchPad-feedback"></div>
+								<div id="touchPad-D-ind" class="touchPad-feedback"></div>
+								<div id="touchPad-L-ind" class="touchPad-feedback"></div>
+								<div id="touchPad-R-ind" class="touchPad-feedback"></div>
+							
+							</div>
 						
 						</div>
+						
+						<div class="touchPad-min pixels_touch-mini"></div>
 								
 					</div>
 									

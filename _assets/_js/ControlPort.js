@@ -94,7 +94,8 @@
 				$("#touchPad-full")[0].addEventListener("touchmove", touchFind, false);
 				$("#touchPad-full")[0].addEventListener("touchend", touchFind, false);
 				
-				$("#touchPad").css("opacity", 1);	
+				
+				CONTROL_SIGNAL.firstTouch ? touchFirstTransition() : $("#touchPad").css("opacity", 1);	
 			}
 			
 			else
@@ -144,20 +145,62 @@
 		mapPlayer_update();
 	}
 	
+	function touchFirstTransition()
+	{
+		var css_touch;
+		
+		css_touch = 	{
+							"-webkit-transform"	: "scale(1)",
+							"transform"			: "scale(1)",
+							"opacity"			: "1"
+						};
+			
+		$("#touchPad_C .touchPad-cont").css(css_touch);		
+	}
+	
 	function touchDisplay(event)
 	{
+		var css_max;
+		var css_min;
+		
 		if(!CONTROL_SIGNAL.firstTouch)
 		{
 			event.preventDefault();
 			
 			if(event.type === "touchstart")
 			{
-				$("#touchPad").css("opacity", 1);
+				css_max = 	{
+								"-webkit-transform"	: "scale(1)",
+								"transform"			: "scale(1)",
+								"opacity"			: "1"
+							};
+							
+				css_min = 	{
+								"-webkit-transform"	: "scale(0)",
+								"transform"			: "scale(0)",
+								"opacity"			: "0"
+							};
 			}
 			
 			if(event.type === "touchend")
 			{
-				$("#touchPad").css("opacity", 0);
+				css_max = 	{
+								"-webkit-transform"	: "scale(0)",
+								"transform"			: "scale(0)",
+								"opacity"			: "0"
+							};
+							
+				css_min = 	{
+								"-webkit-transform"	: "scale(1)",
+								"transform"			: "scale(1)",
+								"opacity"			: "1"
+							};
+			}
+			
+			if(css_max && css_min)
+			{
+				$("#touchPad_C .touchPad-cont").css(css_max);
+				$("#touchPad_C .touchPad-min").css(css_min);	
 			}
 		}
 	}
