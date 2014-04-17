@@ -5,7 +5,7 @@
 	
 	var HIT_TEST;
 	
-	function mapPlayer_init(playerMover, playerTween, hitTestArea)
+	function mapPlayer_init(playerMover, playerTween, playerFadeTarget, hitTestArea)
 	{
 		MAP_PLAYER = {};
 		
@@ -19,7 +19,15 @@
 		
 		MAP_PLAYER.playerMover = playerMover;
 		MAP_PLAYER.playerTween = playerTween;
+		MAP_PLAYER.playerFadeTarget = playerFadeTarget;
 		MAP_PLAYER.hitTestArea = hitTestArea;
+		 
+		MAP_PLAYER.placement = {};
+		MAP_PLAYER.placement.block_x = 0;
+		MAP_PLAYER.placement.block_y = 0;
+		MAP_PLAYER.placement.block_full = 80;
+		MAP_PLAYER.placement.entry = "";
+		MAP_PLAYER.placement.enterMap = false;
 		
 		// MAP_PLAYER link to CONTROL_SIGNAL if false comms is broken
 		MAP_PLAYER.listen = false;
@@ -68,8 +76,6 @@
 	
 	function mapPlayer_ready()
 	{
-		hitTest_init();
-		
 		MAP_PLAYER.listen = true;
 		
 		control_switch(true);
@@ -409,10 +415,58 @@
 	
 	///////////////////////////////// --- PLAYER
 	
+	function mapPlayer_spawn(x, y, d, fullTile)
+	{
+		var css;
+		
+		var map_x = 0;
+		var map_y = 0;
+		
+		MAP_PLAYER.placement.block_x = x;
+		MAP_PLAYER.placement.block_y = y;
+		MAP_PLAYER.placement.entry = d;
+		MAP_PLAYER.placement.enterMap = true;
+		
+		map_x = MAP_PLAYER.placement.block_x * MAP_PLAYER.placement.block_full;
+		map_y = MAP_PLAYER.placement.block_y * MAP_PLAYER.placement.block_full;
+		
+		MAP_PLAYER.pos_x = MAP_PLAYER.cur_x = map_x;
+		MAP_PLAYER.pos_y = MAP_PLAYER.cur_y = map_y;
+		
+		
+		
+		css = 	{
+					"-webkit-transform"	: "translate(" + MAP_PLAYER.pos_x + "px, " + MAP_PLAYER.pos_y + "px)",
+					"transform"			: "translate(" + MAP_PLAYER.pos_x + "px, " + MAP_PLAYER.pos_y + "px)"
+				};
+		
+		$("#" + MAP_PLAYER.playerMover).css(css);
+	
+	
+		if(fullTile)
+		{
+			MAP_PLAYER.move += MAP_PLAYER.move;
+		}
+	}
+	
+	function mapPlayer_entry()
+	{
+		hitTest_init();
+		
+		CONTROL_SIGNAL.data.moveDirection = MAP_PLAYER.placement.entry;
+		
+		MAP_PLAYER.placement.entry = "";
+		
+		$("#" + MAP_PLAYER.playerMover).addClass(MAP_PLAYER.playerTween);
+		
+		$("." + MAP_PLAYER.playerFadeTarget).css("opacity", 1);
+		
+		mapPlayer_update();
+	}
 	
 	function mapPlayer_update()
 	{
-		if(MAP_PLAYER.listen)
+		if(MAP_PLAYER.listen || MAP_PLAYER.placement.enterMap)
 		{
 			if(CONTROL_SIGNAL.data.moveDirection !== MAP_PLAYER.dir && !MAP_PLAYER.walking)
 			{
@@ -491,6 +545,18 @@
 		MAP_PLAYER.walking = false;
 		
 		MAP_PLAYER.dir = "STILL";
+		
+		if(MAP_PLAYER.placement.enterMap)
+		{
+			MAP_PLAYER.placement.enterMap = false;
+			
+			if(MAP_PLAYER.move != 40)
+			{
+				MAP_PLAYER.move = 40;	
+			}
+			
+			mapPlayer_ready();
+		}
 		
 		if(HIT_TEST.hit_portal)
 		{

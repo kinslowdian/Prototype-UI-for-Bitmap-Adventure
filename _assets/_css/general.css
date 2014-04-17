@@ -76,8 +76,8 @@
 				
 				z-index: 1;
 				
-				-webkit-transform	: translate(120px, 120px);
-				transform			: translate(120px, 120px);
+				-webkit-transform	: translate(0px, 0px);
+				transform			: translate(0px, 0px);
 			}
 			
 			#bot
@@ -99,7 +99,18 @@
 				/* background: rgba(0, 0, 0, 0.2); */
 			}
 			
-			#bot div
+			#bot .bot-inner
+			{
+				width: inherit;
+				height: inherit;
+				
+				opacity: 0;
+				
+				-webkit-transition	: opacity 0.2s linear;
+				transition			: opacity 0.2s linear;
+			}
+			
+			#bot .bot-inner div
 			{
 				width: inherit;
 				height: inherit;
@@ -108,7 +119,7 @@
 				background-size: 40px 40px;
 				
 				-webkit-animation	: tween-bot 0.2s linear infinite;
-				animation			: tween-bot 0.2s linear infinite;
+				animation			: tween-bot 0.2s linear infinite;				
 			}
 			
 			@-webkit-keyframes tween-bot

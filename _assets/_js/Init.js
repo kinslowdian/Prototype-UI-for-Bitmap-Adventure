@@ -27,12 +27,15 @@
 	function newLevel()
 	{
 		controlSignal_init();
-		mapPlayer_init("bot", "tween-bot", "pre");	
+		mapPlayer_init("bot", "tween-bot", "bot-inner", "pre");	
 		
-		test = setTimeout(playerMapEntryEnd, 1000);
+		mapPlayer_spawn(2.5, 1.5, "DOWN", true);
+		
+		test = setTimeout(forced, 1000);
 	}
 	
-	function playerMapEntryEnd()
+	function forced()
 	{
-		mapPlayer_ready();
+		trace("forced();");
+		mapPlayer_entry();
 	}
