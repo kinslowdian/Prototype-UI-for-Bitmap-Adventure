@@ -14,92 +14,138 @@
 		<script type="text/javascript" src="_assets/_js/_collision/jquery-collision.js"></script>
 
 		<script type="text/javascript" src="_assets/_js/Init.js"></script>
-		<script type="text/javascript" src="_assets/_js/ControlPort.js"></script>	
+		<script type="text/javascript" src="_assets/_js/ControlPort.js"></script>
+		<script type="text/javascript" src="_assets/_js/Display.js"></script>
+		<script type="text/javascript" src="_assets/_js/Portals.js"></script>	
 		
 	</head>
 	
 	<body onorientationchange="phoneRotate(event);">
 		
-		<div id="wrapper">
+		<div id="wrapper" class="edgeBleed-forest">
 			
-			<div id="content">
-			
-				<div id="dev">
+			<div id="touchPad">
 					
-					<p class="dev-event">EVENT : <span>null</span></p>
-					<p class="dev-x">x : <span>0</span></p>
-					<p class="dev-y">y : <span>0</span></p>
-					<p class="dev-xp">x% : <span>0</span>%</p>
-					<p class="dev-yp">y% : <span>0</span>%</p>
-					<p class="dev-dir">MOVE : <span>null</span></p>
-					
-					
-				</div>
-				
-				<div id="bot-area">
-					
-					<div id="pre" class="collideCheck-player"></div>
-					
-					<div id="bot"> <!-- class="tween-bot" -->
-						
-						<div class="bot-inner">
+				<div id="touchPad_C">
 							
-							<div></div>
-						
-						</div>
-						
-					
-					</div>
-					
-					<div id="wall0" class="collideCheck-field" data-npc="edge"></div>
-					<div id="wall1" class="collideCheck-field" data-npc="edge"></div>
-					
-					<div id="edge0" class="edge collideCheck-field" data-npc="edge"></div>
-					<div id="edge1" class="edge collideCheck-field" data-npc="edge"></div>
-					<div id="edge2" class="edge collideCheck-field" data-npc="edge"></div>
-					<div id="edge3" class="edge collideCheck-field" data-npc="edge"></div>
-					
-					<div id="portal0" class="collideCheck-field" data-npc="portal"></div>
-					
-					<div id="enemy0" class="collideCheck-field" data-npc="enemy">
-						
-						<div></div>
-						
-					</div>
-					
-				</div>
-				
-				
-				<div id="touchPad">
-				
-					<div id="touchPad_C">
-						
-						<div id="touchPad-full"></div>
-						
-						<div class="touchPad-cont">
+					<div id="touchPad-full"></div>
 							
-							<div class="touchPad-inner">
-							
-								<div class="touchPad-base pixels_touch-ui"></div>
+					<div class="touchPad-cont">
 								
-								<div id="touchPad-U-ind" class="touchPad-feedback"></div>
-								<div id="touchPad-D-ind" class="touchPad-feedback"></div>
-								<div id="touchPad-L-ind" class="touchPad-feedback"></div>
-								<div id="touchPad-R-ind" class="touchPad-feedback"></div>
-							
-							</div>
-						
-						</div>
-						
-						<div class="touchPad-min pixels_touch-mini"></div>
+						<div class="touchPad-inner">
 								
+							<div class="touchPad-base pixels_touch-ui"></div>
+									
+							<div id="touchPad-U-ind" class="touchPad-feedback"></div>
+							<div id="touchPad-D-ind" class="touchPad-feedback"></div>
+							<div id="touchPad-L-ind" class="touchPad-feedback"></div>
+							<div id="touchPad-R-ind" class="touchPad-feedback"></div>
+								
+						</div>
+							
 					</div>
+							
+					<div class="touchPad-min pixels_touch-mini"></div>
 									
 				</div>
-			
+										
 			</div>
 			
-		</div>
+			<div class="stage-view-y">
+			
+				<div id="content" class="pixels_forestMass">
+					
+					<div class="field">
+						
+						<div class="fieldEdge">
+							
+							<div class="fieldEdge-T collideCheck-field" data-npc="edge"></div>
+							<div class="fieldEdge-B collideCheck-field" data-npc="edge"></div>
+							<div class="fieldEdge-L collideCheck-field" data-npc="edge"></div>
+							<div class="fieldEdge-R collideCheck-field" data-npc="edge"></div>
+						
+						</div> <!-- .fieldEdge -->
+						
+						<div class="player-area">
+							
+							<div id="preHitTest" class="collideCheck-player"></div>
+							
+							<div id="player-block"> <!-- class="tween-bot" -->
+								
+								<div class="map-goat">
+									
+									<div class="player-sprite"></div>
+								
+								</div>
+								
+							</div>
+							
+						</div> <!-- .player-area -->
+						
+						<div class="enemy-area">
+							
+							<div id="enemy0" class="collideCheck-field" data-npc="enemy">
+								
+								<div></div>
+								
+							</div>
+							
+						</div> <!-- .enemy-area -->
+						
+						<div class="portal-area">
+							
+							<div id="portal_0_0" class="collideCheck-field" data-npc="portal"></div>
+							
+							<div id="portal_0_1" class="collideCheck-field" data-npc="portal"></div>
+							
+							<div id="portal_0_2" class="collideCheck-field" data-npc="portal"></div>
+							
+						</div> <!-- .portal-area -->
+						
+						<div class="field-area">
+							
+							<div id="wall0" class="collideCheck-field" data-npc="edge"></div>
+							<div id="wall1" class="collideCheck-field" data-npc="edge"></div>
+							
+						</div> <!-- .field-area -->
+						
+						<div class="field-floor"></div>	
+						
+					</div> <!-- .field -->
+					
+					<div class="woodland">
+						
+						<div class="woodland-darkness-left woodland-darkness">
+							
+							<div class="landDecayBlock_0 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_1 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_2 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_3 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_4 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_5 landDecayBlock pixels_landDecay"></div>
+							
+						</div>
+						
+						<div class="woodland-darkness-right woodland-darkness">
+							
+							<div class="landDecayBlock_0 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_1 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_2 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_3 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_4 landDecayBlock pixels_landDecay"></div>
+							<div class="landDecayBlock_5 landDecayBlock pixels_landDecay"></div>
+							
+						</div>
+						
+						<div class="woodland-bottom pixels_woodlandBottom"></div>			
+						
+					</div>
+			
+					</div> <!-- #content -->
+			
+			</div> <!-- .stage-view-y -->
+			
+		</div> <!-- #wrapper -->
 		
 	</body>
 	

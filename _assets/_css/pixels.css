@@ -1,0 +1,36 @@
+	
+	div[class*='tween-']
+	{
+		-webkit-backface-visibility	: hidden;
+		backface-visibility			: hidden;
+					
+		/* TRY */
+		-webkit-transform-style		: preserve-3d;
+		-webkit-transform			: translateZ(0);
+					
+		transform-style				: preserve-3d;
+		transform					: translateZ(0);
+	}
+	
+	.pixels_landDecay
+	{
+		background-image: url(../_img/landPixelDecay_2x.png);
+		background-repeat: no-repeat;
+		background-size: 1200px 800px;
+	}
+	
+	.pixels_woodlandBottom
+	{
+		background-image: url(../_img/bottomEnd_2x.png);
+		background-repeat: repeat-x;
+		background-position: center top;
+		background-size: 240px 160px;
+	}
+	
+	.pixels_forestMass
+	{
+		background-image: url(../_img/tile_pineTreesMass_2x.png);
+		background-repeat: repeat;
+		background-position: center top;
+		background-size: 240px 240px;		
+	}

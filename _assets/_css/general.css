@@ -19,19 +19,54 @@
 				
 				position: absolute;
 				
+/*
+				left: 0; right: 0; top: 0; bottom: 0;
+				
+				margin: 0 auto;
+*/
 				/* background: #dfdfd5; */
+/*
 				background: url(../_img/tile_pineTreesMass_2x.png) repeat center top;
 				background-size: 240px 240px;
+*/
+			}
+			
+			.edgeBleed-forest
+			{
+				background: #6bd0ad;				
 			}
 			
 			#content
 			{
+				width: 1280px;
+				height: 2400px; /* 2000px */
+				
+/*
+				background: url(../_img/tile_pineTreesMass_2x.png) repeat center top;
+				background-size: 240px 240px;
+*/
+				
+				position: absolute;
+				
+				left: 0; right: 0; top: 0; bottom: 0;
+				
+				margin: 0 auto;
+				
+				z-index: 1;
+			}
+			
+			#far
+			{
 				width: inherit;
 				height: inherit;
 				
-				position: relative;
+				position: absolute;
+				
+				left: 0; right: 0; top: 0; bottom: 0;
 				
 				margin: 0 auto;
+				
+				z-index: 0; 				
 			}
 			
 			#dev
@@ -65,9 +100,12 @@
 				left: 0; right: 0; top: 0; bottom: 0;
 				
 				margin: 0 auto;
+				
+				background: #dfdfd5;
+
 			}
 			
-			#bot, #pre
+			#player-block, #preHitTest
 			{
 				width: 40px;
 				height: 40px;
@@ -80,26 +118,13 @@
 				transform			: translate(0px, 0px);
 			}
 			
-			#bot
-			{
-/*
-				-webkit-transition	: -webkit-transform 0.2s ease-in-out;
-				transition			: transform 0.2s ease-in-out;
-*/
-			}
-			
-			.tween-bot
+			.tween-player-block
 			{
 				-webkit-transition	: -webkit-transform 0.2s ease-in-out;
 				transition			: transform 0.2s ease-in-out;				
 			}
 			
-			#pre
-			{
-				/* background: rgba(0, 0, 0, 0.2); */
-			}
-			
-			#bot .bot-inner
+			#player-block .map-goat
 			{
 				width: inherit;
 				height: inherit;
@@ -110,19 +135,46 @@
 				transition			: opacity 0.2s linear;
 			}
 			
-			#bot .bot-inner div
+			#player-block .map-goat .player-sprite
 			{
 				width: inherit;
 				height: inherit;
 				
 				background: url(../_img/walk.png) no-repeat left top;
-				background-size: 40px 40px;
-				
-				-webkit-animation	: tween-bot 0.2s linear infinite;
-				animation			: tween-bot 0.2s linear infinite;				
+				background-size: 40px 40px;				
 			}
 			
-			@-webkit-keyframes tween-bot
+			.tween-player-walkX
+			{
+				-webkit-animation	: tweenPlayerWalkX_Frames 0.2s linear infinite;
+				animation			: tweenPlayerWalkX_Frames 0.2s linear infinite;				
+			}
+			
+			@-webkit-keyframes tweenPlayerWalkX_Frames
+			{
+				0%		{-webkit-transform: translateX(0px);}
+				25%		{-webkit-transform: translateX(-2px);}
+				50% 	{-webkit-transform: translateX(0px);}
+				75%		{-webkit-transform: translateX(2px);}
+				100% 	{-webkit-transform: translateX(0px);}
+			}
+			
+			@keyframes tweenPlayerWalkX_Frames
+			{
+				0%		{transform: translateX(0px);}
+				25%		{transform: translateX(-2px);}
+				50% 	{transform: translateX(0px);}
+				75%		{transform: translateX(2px);}
+				100% 	{transform: translateX(0px);}
+			}
+			
+			.tween-player-walkY
+			{
+				-webkit-animation	: tweenPlayerWalkY_Frames 0.2s linear infinite;
+				animation			: tweenPlayerWalkY_Frames 0.2s linear infinite;				
+			}
+			
+			@-webkit-keyframes tweenPlayerWalkY_Frames
 			{
 				0%		{-webkit-transform: translateY(0px);}
 				25%		{-webkit-transform: translateY(-2px);}
@@ -131,7 +183,7 @@
 				100% 	{-webkit-transform: translateY(0px);}
 			}
 			
-			@keyframes tween-bot
+			@keyframes tweenPlayerWalkY_Frames
 			{
 				0%		{transform: translateY(0px);}
 				25%		{transform: translateY(-2px);}
@@ -176,15 +228,47 @@
 				z-index: 1;
 			}
 			
-			#portal0
+			.portal-area #portal_0_0
 			{
 				width: 80px;
 				height: 80px;
 				
 				background: #f41b56;
 				
+				position: absolute;
+				
 				-webkit-transform	: translate(240px, 320px);
 				transform			: translate(240px, 320px);
+				
+				z-index: 1;
+			}
+			
+			.portal-area #portal_0_1
+			{
+				width: 80px;
+				height: 80px;
+				
+				background: #f41b56;
+				
+				position: absolute;
+				
+				-webkit-transform	: translate(80px, 1280px);
+				transform			: translate(80px, 1280px);
+				
+				z-index: 1;
+			}
+			
+			.portal-area #portal_0_2
+			{
+				width: 80px;
+				height: 80px;
+				
+				background: #f41b56;
+				
+				position: absolute;
+				
+				-webkit-transform	: translate(0px, 0px);
+				transform			: translate(0px, 0px);
 				
 				z-index: 1;
 			}
@@ -232,7 +316,7 @@
 	#edge0
 	{
 		width: 40px;
-		height: 480px;
+		height: 2000px;
 		
 		-webkit-transform: translate(-40px, 0);
 		transform: translate(-40px, 0);
@@ -241,7 +325,7 @@
 	#edge1
 	{
 		width: 40px;
-		height: 480px;
+		height: 2000px;
 		
 		-webkit-transform: translate(320px, 0);
 		transform: translate(320px, 0);
@@ -261,8 +345,8 @@
 		width: 320px;
 		height: 40px;
 		
-		-webkit-transform: translate(0, 440px);
-		transform: translate(0, 440px);
+		-webkit-transform: translate(0, 2000px);
+		transform: translate(0, 2000px);
 	}
 	
 	.edge
@@ -276,3 +360,88 @@
 		
 		z-index: 1;
 	}
+	
+	
+	
+	.woodland
+	{
+		width: 1280px;
+		height: inherit;
+		/* height: 0; */
+		
+		position: absolute;
+		
+		top: 0; left: 0; right:0; bottom: 0;
+		
+		margin: 0 auto;
+		
+		z-index: 0;		
+	}
+	
+	
+	.woodland-darkness
+	{
+		width: 240px;
+		/* height: auto; */
+		height: inherit;
+		
+		position: absolute;
+		
+		top: 0;
+		bottom: 0;
+		
+		z-index: 2;
+	}
+	
+	.woodland-darkness-left
+	{
+		left: 0;
+	}
+	
+	.woodland-darkness-right
+	{
+		-webkit-transform: scaleX(-1);
+		transform: scaleX(-1);
+		
+		right: 0;
+	}
+	
+	.landDecayBlock
+	{
+		width: 240px;
+		height: 400px;
+		
+		position: relative;
+		
+		margin: 0;
+		padding: 0;
+		
+		z-index: 2;
+	}
+	
+	
+	.stage-view-y
+	{
+		-webkit-transition: -webkit-transform 0.5s ease-in-out;
+		transition: transform 0.5s ease-in-out;
+	}
+	
+	.woodland-bottom
+	{
+		width: inherit;
+		height: 160px;
+		
+		position: absolute;
+		
+		left: 0;
+		bottom: 0;
+		
+		z-index: 1;
+		
+		/* background: rgba(255, 0, 51, 0.4); */
+	}
+	
+	
+	
+	
+	

@@ -5,7 +5,7 @@
 	
 	var HIT_TEST;
 	
-	function mapPlayer_init(playerMover, playerTween, playerFadeTarget, hitTestArea)
+	function mapPlayer_init(playerMover, playerTween, playerWalkTweenX, playerWalkTweenY, playerFadeTarget, hitTestArea)
 	{
 		MAP_PLAYER = {};
 		
@@ -17,10 +17,13 @@
 		MAP_PLAYER.move = 40;
 		MAP_PLAYER.walking = false;
 		
-		MAP_PLAYER.playerMover = playerMover;
-		MAP_PLAYER.playerTween = playerTween;
+		MAP_PLAYER.playerMover 		= playerMover;
+		MAP_PLAYER.playerTween 		= playerTween;
+		MAP_PLAYER.playerWalkTween	= "";
+		MAP_PLAYER.playerWalkTweenX = playerWalkTweenX;
+		MAP_PLAYER.playerWalkTweenY = playerWalkTweenY;
 		MAP_PLAYER.playerFadeTarget = playerFadeTarget;
-		MAP_PLAYER.hitTestArea = hitTestArea;
+		MAP_PLAYER.hitTestArea 		= hitTestArea;
 		 
 		MAP_PLAYER.placement = {};
 		MAP_PLAYER.placement.block_x = 0;
@@ -60,6 +63,7 @@
 			CONTROL_SIGNAL.data.x_measure = $("#touchPad-full").width();
 			CONTROL_SIGNAL.data.y_measure = $("#touchPad-full").height();
 			
+			// CONTROL_SIGNAL.ui_ready = false;
 			CONTROL_SIGNAL.firstTouch = true;
 		}
 	}
@@ -78,7 +82,11 @@
 	{
 		MAP_PLAYER.listen = true;
 		
+		CONTROL_SIGNAL.firstTouch = true;
+		
 		control_switch(true);
+		
+		// touchDisplay(null);
 	}
 	
 	
@@ -89,6 +97,8 @@
 	
 	function control_switch(ON)
 	{
+		trace("control_switch(ON); === " + ON);
+		
 		if(ON)
 		{
 			if(CONTROL_SIGNAL.enableTouch)
@@ -100,8 +110,10 @@
 				$("#touchPad-full")[0].addEventListener("touchmove", touchFind, false);
 				$("#touchPad-full")[0].addEventListener("touchend", touchFind, false);
 				
-				
-				CONTROL_SIGNAL.firstTouch ? touchFirstTransition() : $("#touchPad").css("opacity", 1);	
+				if(CONTROL_SIGNAL.firstTouch)
+				{
+					touchDisplay(null);	
+				}
 			}
 			
 			else
@@ -122,7 +134,13 @@
 				$("#touchPad-full")[0].removeEventListener("touchmove", touchFind, false);
 				$("#touchPad-full")[0].removeEventListener("touchend", touchFind, false);
 				
-				$("#touchPad").css("opacity", 0);	
+				touchDisplay(null);
+				
+				// $("#touchPad").css("opacity", 0);
+				
+				// CONTROL_SIGNAL.ui_ready = false;
+				
+				// touchLastTransition();	
 			}
 			
 			else
@@ -130,7 +148,8 @@
 				$(window)[0].removeEventListener("keydown", keyboardFind, false);
 				$(window)[0].removeEventListener("keyup", keyboardFind, false);	
 			}
-						
+			
+			$("#" + MAP_PLAYER.playerMover).removeClass(MAP_PLAYER.playerTween);			
 		}
 		
 		control_reset();
@@ -142,6 +161,9 @@
 		
 		if(CONTROL_SIGNAL.enableTouch)
 		{
+			// CONTROL_SIGNAL.firstTouch = true;
+			// CONTROL_SIGNAL.ui_ready = false;
+			
 			CONTROL_SIGNAL.data.x_percent = 0;
 			CONTROL_SIGNAL.data.y_percent = 0;	
 			
@@ -160,10 +182,131 @@
 							"transform"			: "scale(1)",
 							"opacity"			: "1"
 						};
+		
+		$("#touchPad_C .touchPad-cont").css(css_touch);
+		
+/*
+		$("#touchPad_C .touchPad-cont")[0].addEventListener("webkitTransitionEnd", touchTransitionEnd, false);
+		$("#touchPad_C .touchPad-cont")[0].addEventListener("transitionend", touchTransitionEnd, false);
 			
-		$("#touchPad_C .touchPad-cont").css(css_touch);		
+		$("#touchPad_C .touchPad-cont").css(css_touch);
+*/		
 	}
 	
+/*
+	function touchLastTransition()
+	{
+		var css_touch;
+		
+		css_touch = 	{
+							"-webkit-transform"	: "scale(0)",
+							"transform"			: "scale(0)",
+							"opacity"			: "0"
+						};
+						
+		$("#touchPad_C .touchPad-cont")[0].addEventListener("webkitTransitionEnd", touchTransitionEnd, false);
+		$("#touchPad_C .touchPad-cont")[0].addEventListener("transitionend", touchTransitionEnd, false);
+			
+		$("#touchPad_C .touchPad-cont").css(css_touch);			
+	}
+*/
+	
+/*
+	function touchTransitionEnd(event)
+	{
+		$("#touchPad_C .touchPad-cont")[0].removeEventListener("webkitTransitionEnd", touchTransitionEnd, false);
+		$("#touchPad_C .touchPad-cont")[0].removeEventListener("transitionend", touchTransitionEnd, false);
+		
+		CONTROL_SIGNAL.ui_ready = true;
+	
+		touchFeedback();
+	}
+*/
+	
+	function touchDisplay(event)
+	{
+		var css_max;
+		var css_min;
+		
+		if(event != null)
+		{
+			event.preventDefault();
+			
+			if(event.type === "touchstart")
+			{
+				css_max = 	{
+								"-webkit-transform"	: "scale(1)",
+								"transform"			: "scale(1)",
+								"opacity"			: "1"
+							};
+							
+				css_min = 	{
+								"-webkit-transform"	: "scale(0)",
+								"transform"			: "scale(0)",
+								"opacity"			: "0"
+							};
+			}
+			
+			if(event.type === "touchend")
+			{
+				css_max = 	{
+								"-webkit-transform"	: "scale(0)",
+								"transform"			: "scale(0)",
+								"opacity"			: "0"
+							};
+							
+				css_min = 	{
+								"-webkit-transform"	: "scale(1)",
+								"transform"			: "scale(1)",
+								"opacity"			: "1"
+							};
+			}
+			
+		}
+		
+		else
+		{
+			if(CONTROL_SIGNAL.firstTouch)
+			{
+				CONTROL_SIGNAL.firstTouch = false;
+				
+				css_max = 	{
+								"-webkit-transform"	: "scale(1)",
+								"transform"			: "scale(1)",
+								"opacity"			: "1"
+							};
+							
+				css_min = 	{
+								"-webkit-transform"	: "scale(0)",
+								"transform"			: "scale(0)",
+								"opacity"			: "0"
+							};				
+			}
+			
+			else
+			{
+				css_max = 	{
+								"-webkit-transform"	: "scale(0)",
+								"transform"			: "scale(0)",
+								"opacity"			: "0"
+							};
+								
+				css_min = 	{
+								"-webkit-transform"	: "scale(1)",
+								"transform"			: "scale(1)",
+								"opacity"			: "1"
+							};					
+			}		
+		}
+		
+		if(css_max && css_min)
+		{
+			$("#touchPad_C .touchPad-cont").css(css_max);
+			$("#touchPad_C .touchPad-min").css(css_min);	
+		}
+	}	
+	
+/*
 	function touchDisplay(event)
 	{
 		var css_max;
@@ -210,6 +353,7 @@
 			}
 		}
 	}
+*/
 	
 	function touchFind(event)
 	{
@@ -242,10 +386,12 @@
 		
 		if(event.type === "touchend")
 		{
+/*
 			if(CONTROL_SIGNAL.firstTouch)
 			{
 				CONTROL_SIGNAL.firstTouch = false;
 			}
+*/
 			
 			control_reset();
 		}
@@ -349,7 +495,7 @@
 				$("#" + ind).css("opacity", 1);
 				
 				CONTROL_SIGNAL.data.indicator = ind;	
-			}			
+			}		
 		}
 	}
 	
@@ -415,7 +561,7 @@
 	
 	///////////////////////////////// --- PLAYER
 	
-	function mapPlayer_spawn(x, y, d, fullTile)
+	function mapPlayer_spawn(x, y, d, moveExtra)
 	{
 		var css;
 		
@@ -443,14 +589,21 @@
 		$("#" + MAP_PLAYER.playerMover).css(css);
 	
 	
-		if(fullTile)
+		if(moveExtra)
 		{
 			MAP_PLAYER.move += MAP_PLAYER.move;
+		}
+		
+		else
+		{
+			
 		}
 	}
 	
 	function mapPlayer_entry()
 	{
+		trace("mapPlayer_entry();");
+		
 		hitTest_init();
 		
 		CONTROL_SIGNAL.data.moveDirection = MAP_PLAYER.placement.entry;
@@ -473,21 +626,29 @@
 				if(CONTROL_SIGNAL.data.moveDirection === "UP")
 				{
 					MAP_PLAYER.pos_y -= MAP_PLAYER.move;
+					
+					MAP_PLAYER.playerWalkTween = MAP_PLAYER.playerWalkTweenX;
 				}
 				
 				if(CONTROL_SIGNAL.data.moveDirection === "DOWN")
 				{
 					MAP_PLAYER.pos_y += MAP_PLAYER.move;
+					
+					MAP_PLAYER.playerWalkTween = MAP_PLAYER.playerWalkTweenX;
 				}
 				
 				if(CONTROL_SIGNAL.data.moveDirection === "LEFT")
 				{
 					MAP_PLAYER.pos_x -= MAP_PLAYER.move;
+					
+					MAP_PLAYER.playerWalkTween = MAP_PLAYER.playerWalkTweenY;
 				}
 				
 				if(CONTROL_SIGNAL.data.moveDirection === "RIGHT")
 				{
 					MAP_PLAYER.pos_x += MAP_PLAYER.move;
+					
+					MAP_PLAYER.playerWalkTween = MAP_PLAYER.playerWalkTweenY;
 				}
 				
 				if(MAP_PLAYER.pos_x != MAP_PLAYER.cur_x || MAP_PLAYER.pos_y != MAP_PLAYER.cur_y)
@@ -527,6 +688,14 @@
 		
 		else
 		{
+			$("#" + MAP_PLAYER.playerMover + " .player-sprite").addClass(MAP_PLAYER.playerWalkTween);
+			
+			if(HIT_TEST.hit_portal)
+			{
+				$("." + MAP_PLAYER.playerFadeTarget).css("opacity", 0);
+			}
+			
+			
 			$("." + MAP_PLAYER.playerTween)[0].addEventListener("webkitTransitionEnd", mapPlayer_move_end, false);
 			$("." + MAP_PLAYER.playerTween)[0].addEventListener("transitionend", mapPlayer_move_end, false);
 			
@@ -545,6 +714,9 @@
 		MAP_PLAYER.walking = false;
 		
 		MAP_PLAYER.dir = "STILL";
+		
+		$("#" + MAP_PLAYER.playerMover + " .player-sprite").removeClass(MAP_PLAYER.playerWalkTween);
+		
 		
 		if(MAP_PLAYER.placement.enterMap)
 		{
@@ -572,6 +744,8 @@
 		{
 			mapPlayer_update();
 		}
+		
+		moveStageTest();
 	}
 	
 	function gameStateChange(gotoState)
@@ -582,7 +756,7 @@
 		
 		if(gotoState === "PORTAL")
 		{
-			
+			portalEntry(HIT_TEST.hit_portal_id);
 		}
 		
 		if(gotoState === "ENEMY")
@@ -607,24 +781,35 @@
 		HIT_TEST.hit_portal = false;
 		HIT_TEST.hit_enemy = false;
 		
+		HIT_TEST.hit_portal_id = "";
+		HIT_TEST.hit_enemy_id = "";
+		
 		
 		if(HIT_TEST.hits[0] != undefined || HIT_TEST.hits[0] != null)
 		{
-			hit_id = $(HIT_TEST.hits[0]).attr("id");
+			if($(HIT_TEST.hits[0]).attr("id"))
+			{
+				hit_id = $(HIT_TEST.hits[0]).attr("id");
+			}
 			
-			if($("#" + hit_id).attr("data-npc") === "edge")
+			
+			if($(HIT_TEST.hits[0]).attr("data-npc") === "edge")
 			{
 				HIT_TEST.hit_edge = true;	
 			}
 			
-			if($("#" + hit_id).attr("data-npc") === "portal")
+			if($(HIT_TEST.hits[0]).attr("data-npc") === "portal")
 			{
-				HIT_TEST.hit_portal = true;	
+				HIT_TEST.hit_portal = true;
+				
+				HIT_TEST.hit_portal_id = hit_id;	
 			}
 			
-			if($("#" + hit_id).attr("data-npc") === "enemy")
+			if($(HIT_TEST.hits[0]).attr("data-npc") === "enemy")
 			{
-				HIT_TEST.hit_enemy = true;	
+				HIT_TEST.hit_enemy = true;
+				
+				HIT_TEST.hit_enemy_id = hit_id;	
 			}
 		}
 	}	

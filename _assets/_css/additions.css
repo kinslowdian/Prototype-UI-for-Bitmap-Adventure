@@ -1,0 +1,104 @@
+	
+	.field
+	{
+		width: 320px;
+		height: 0px;
+		
+		position: relative;
+		
+		margin: 0 auto;
+		
+		z-index: 4;
+	}
+	
+	.field-area, .enemy-area, .portal-area, .player-area, .fieldEdge
+	{
+		width: 320px;
+		height: 2000px;
+		
+		position: absolute;
+	}
+	
+	.fieldEdge
+	{
+		width: inherit;
+		z-index: 3;
+	}
+	
+	.fieldEdge-T, .fieldEdge-B
+	{
+		width: inherit;
+		height: 40px;
+		
+		position: absolute;
+		
+		left: 0px;
+	}
+	
+	.fieldEdge-R, .fieldEdge-L
+	{
+		width: 40px;
+		height: inherit;
+		
+		position: absolute;
+		
+		top: 0px;
+	}
+	
+	.fieldEdge-T
+	{
+		top: -40px;
+	}
+	
+	.fieldEdge-B
+	{
+		bottom: -40px;
+	}
+	
+	.fieldEdge-R
+	{
+		right: -40px;
+	}
+	
+	.fieldEdge-L
+	{
+		left: -40px;
+	}
+	
+	.player-area
+	{
+		z-index: 3;
+		
+/*
+		-webkit-transition	: opacity 0.5s ease;
+		transition 		 	: opacity 0.5s ease;
+*/
+	}
+	
+	.field-area
+	{
+		z-index: 1;
+	}
+	
+	.portal-area
+	{
+		z-index: 2;
+	}
+	
+	.enemy-area
+	{
+		z-index: 2;
+	}
+	
+	.field-floor
+	{
+		width: 320px;
+		height: 2000px;
+		
+		position: absolute;
+		
+		background: #dfdfd5;
+	
+		z-index: 0;
+	}
+	
