@@ -14,6 +14,7 @@
 		<script type="text/javascript" src="_assets/_js/_collision/jquery-collision.js"></script>
 
 		<script type="text/javascript" src="_assets/_js/Init.js"></script>
+		<script type="text/javascript" src="_assets/_js/LevelBuild.js"></script>
 		<script type="text/javascript" src="_assets/_js/ControlPort.js"></script>
 		<script type="text/javascript" src="_assets/_js/Display.js"></script>
 		<script type="text/javascript" src="_assets/_js/Portals.js"></script>	
@@ -22,34 +23,34 @@
 	
 	<body onorientationchange="phoneRotate(event);">
 		
-		<div id="wrapper" class="edgeBleed-forest">
-			
-			<div id="touchPad">
+		<div id="touchPad">
 					
-				<div id="touchPad_C">
+			<div id="touchPad_C">
 							
-					<div id="touchPad-full"></div>
+				<div id="touchPad-full"></div>
 							
-					<div class="touchPad-cont">
+				<div class="touchPad-cont">
 								
-						<div class="touchPad-inner">
+					<div class="touchPad-inner">
 								
-							<div class="touchPad-base pixels_touch-ui"></div>
+						<div class="touchPad-base pixels_touch-ui"></div>
 									
-							<div id="touchPad-U-ind" class="touchPad-feedback"></div>
-							<div id="touchPad-D-ind" class="touchPad-feedback"></div>
-							<div id="touchPad-L-ind" class="touchPad-feedback"></div>
-							<div id="touchPad-R-ind" class="touchPad-feedback"></div>
+						<div id="touchPad-U-ind" class="touchPad-feedback"></div>
+						<div id="touchPad-D-ind" class="touchPad-feedback"></div>
+						<div id="touchPad-L-ind" class="touchPad-feedback"></div>
+						<div id="touchPad-R-ind" class="touchPad-feedback"></div>
 								
-						</div>
-							
 					</div>
 							
-					<div class="touchPad-min pixels_touch-mini"></div>
-									
 				</div>
-										
+							
+				<div class="touchPad-min pixels_touch-mini"></div>
+									
 			</div>
+										
+		</div>
+		
+		<div id="wrapper" class="edgeBleed-forest">
 			
 			<div class="stage-view-y">
 			
@@ -94,18 +95,12 @@
 						
 						<div class="portal-area">
 							
-							<div id="portal_0_0" class="collideCheck-field" data-npc="portal"></div>
 							
-							<div id="portal_0_1" class="collideCheck-field" data-npc="portal"></div>
-							
-							<div id="portal_0_2" class="collideCheck-field" data-npc="portal"></div>
 							
 						</div> <!-- .portal-area -->
 						
 						<div class="field-area">
 							
-							<div id="wall0" class="collideCheck-field" data-npc="edge"></div>
-							<div id="wall1" class="collideCheck-field" data-npc="edge"></div>
 							
 						</div> <!-- .field-area -->
 						
@@ -146,6 +141,8 @@
 			</div> <!-- .stage-view-y -->
 			
 		</div> <!-- #wrapper -->
+		
+		<div id="memory"></div>
 		
 	</body>
 	

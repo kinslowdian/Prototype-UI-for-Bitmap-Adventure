@@ -8,6 +8,18 @@
 				
 				-webkit-user-select: none;
 				user-select: none;
+				
+				-webkit-backface-visibility	: hidden;
+				backface-visibility			: hidden;
+			}
+			
+			#memory
+			{
+				width: 0;
+				height: 0;
+				position: absolute;
+				visibility: hidden;
+				overflow: hidden;
 			}
 			
 			#wrapper
@@ -19,6 +31,8 @@
 				
 				position: absolute;
 				
+				z-index: 0;
+				
 /*
 				left: 0; right: 0; top: 0; bottom: 0;
 				
@@ -28,6 +42,7 @@
 /*
 				background: url(../_img/tile_pineTreesMass_2x.png) repeat center top;
 				background-size: 240px 240px;
+				
 */
 			}
 			
@@ -228,15 +243,9 @@
 				z-index: 1;
 			}
 			
+/*
 			.portal-area #portal_0_0
 			{
-				width: 80px;
-				height: 80px;
-				
-				background: #f41b56;
-				
-				position: absolute;
-				
 				-webkit-transform	: translate(240px, 320px);
 				transform			: translate(240px, 320px);
 				
@@ -245,13 +254,6 @@
 			
 			.portal-area #portal_0_1
 			{
-				width: 80px;
-				height: 80px;
-				
-				background: #f41b56;
-				
-				position: absolute;
-				
 				-webkit-transform	: translate(80px, 1280px);
 				transform			: translate(80px, 1280px);
 				
@@ -260,18 +262,125 @@
 			
 			.portal-area #portal_0_2
 			{
-				width: 80px;
-				height: 80px;
-				
-				background: #f41b56;
-				
-				position: absolute;
-				
 				-webkit-transform	: translate(0px, 0px);
 				transform			: translate(0px, 0px);
 				
 				z-index: 1;
 			}
+*/
+			
+			
+			.portal
+			{
+				width: 80px;
+				height: 80px;
+				
+				position: absolute;
+				
+				/* background: #f41b56; */				
+			}
+			
+			.portal .portal_top
+			{
+				width: inherit;
+				height: inherit;
+				
+				background-position: 0 0;
+				
+				position: absolute;
+				
+				z-index: 1;
+			}
+			
+			.portal .portal_space
+			{
+				width: 70px;
+				height: 70px;
+				
+				background: #ff0070;
+				
+				position: absolute;
+				
+				left: 5px;
+				top: 5px;
+				
+				overflow: hidden;
+				
+				z-index: 0;
+			}
+			
+			.tween-portalStars
+			{
+				-webkit-animation	: tweenPortalStarsFrames 1s linear infinite;
+				animation			: tweenPortalStarsFrames 1s linear infinite;
+			}
+			
+			@-webkit-keyframes tweenPortalStarsFrames
+			{
+				from 	{ -webkit-transform: translateX(0px); }
+				to		{ -webkit-transform: translateX(-80px); }
+			}
+			
+			@keyframes tweenPortalStarsFrames
+			{
+				from 	{ transform: translateX(0px); }
+				to		{ transform: translateX(-80px); }
+			}
+			
+			.portal .portal_stars0
+			{
+				width: 160px;
+				height: 80px;
+				
+				position: absolute;
+				
+				background-repeat: repeat-x;
+				background-position: 0 -80px;
+				
+				-webkit-animation-duration: 2s;
+				
+				left: -5px;
+				top: -5px;
+					
+				z-index: 2;
+			}
+			
+			.portal .portal_stars1
+			{
+				width: 160px;
+				height: 80px;
+				
+				position: absolute;
+				
+				background-repeat: repeat-x;
+				background-position: 0 -160px;
+				
+				-webkit-animation-duration: 4s;
+				
+				left: -5px;
+				top: -5px;
+					
+				z-index: 1;
+			}
+			
+			.portal .portal_stars2
+			{
+				width: 160px;
+				height: 80px;
+				
+				position: absolute;
+				
+				background-repeat: repeat-x;
+				background-position: 0 -240px;
+				
+				-webkit-animation-duration: 6s;
+				
+				left: -5px;
+				top: -5px;
+					
+				z-index: 0;
+			}		
+			
 			
 			#enemy0
 			{

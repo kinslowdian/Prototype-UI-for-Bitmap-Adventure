@@ -9,6 +9,10 @@
 	
 	var ROM = {};
 	
+	var event_htmlLoaded = document.createEvent("Event");
+	
+	event_htmlLoaded.initEvent("EVENT_HTML_LOADED", true, true);
+	
 	function phoneRotate(event)
 	{
 		touchOffsetUpdate();
@@ -18,39 +22,23 @@
 	{
 		deviceTest = deviceTouchTest();
 		
-		ROM.level = 0;
+		ROM.mapLevel = 0;
 		
-		display_init();
-		
-		portalHack();
-	
-		newLevel();
+		gameData_get();
 	}
 	
-	function portalHack()
+	function temp_callback_json()
 	{
-		var p;
+		html_lib_init();
+	}
+	
+	function temp_callback_html()
+	{
+		display_init();
 		
-		p = new portal();
-		
-		// portal_num, portal_exist, x, y, w, h, portal_level, portal_exit, portal_direction
-		p.portal_open(0, 0, 3, 4, 1, 1, 0, 2, "UP");
-		
-		portals_ARR.push(p);
-		
-		p = new portal();
-		
-		p.portal_open(1, 0, 1, 16, 1, 1, 0, 0, "LEFT");
-		
-		portals_ARR.push(p);	
-		
-		p = new portal();
-		
-		p.portal_open(2, 0, 0, 0, 1, 1, 0, 1, "DOWN");
-		
-		portals_ARR.push(p);		
-		
-		trace(portals_ARR);
+		level_init();
+	
+		newLevel();		
 	}
 	
 	function deviceTouchTest()

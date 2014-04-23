@@ -65,7 +65,7 @@
 			
 			DISPLAY.stageOffset = $("#content").offset().left;
 			
-			DISPLAY.viewHeight = document.height;
+			DISPLAY.viewHeight = $(document).height();
 			
 			DISPLAY.y = 0;	
 			DISPLAY.current_y = 0;
