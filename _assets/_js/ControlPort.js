@@ -44,6 +44,21 @@
 		{
 			CONTROL_SIGNAL.enableTouch = true;
 			
+			if(window.innerWidth < window.innerHeight)
+			{
+				$("#displayError").addClass("displayErrorHide");
+				$("#displayError-base").css("opacity", 0);
+			}
+			
+			else
+			{
+				$("#displayError").addClass("displayErrorShow");
+				$("#displayError-base").css("opacity", 1);
+			}
+			
+			$("#displayError").addClass("tween-displayError");
+			$("#displayError-base").addClass("tween-displayError-base");
+			
 			trace("DEVICE === TOUCH");
 		}
 		
@@ -54,6 +69,8 @@
 			trace("DEVICE === KEYBOARD");
 		
 			$("#touchPad").remove();
+			
+			$("#displayError").remove();
 		}
 		
 		CONTROL_SIGNAL.data = {};
@@ -802,7 +819,9 @@
 			{
 				HIT_TEST.hit_portal = true;
 				
-				HIT_TEST.hit_portal_id = hit_id;	
+				HIT_TEST.hit_portal_id = hit_id;
+				
+				alert(HIT_TEST.hit_portal_id);	
 			}
 			
 			if($(HIT_TEST.hits[0]).attr("data-npc") === "enemy")

@@ -102,3 +102,47 @@
 		z-index: 0;
 	}
 	
+	#space
+	{
+		width: 100%;
+		height: 100%;
+				
+		overflow: hidden;
+				
+		position: absolute;
+				
+		z-index: 1;	
+	}
+	
+	#space .weather-wind
+	{
+		width: inherit;
+		height: inherit;
+		
+		position: absolute;
+		
+		z-index: 0;
+	}
+	
+	#space .weather-rain
+	{
+		width: inherit;
+		height: inherit;
+		
+		position: absolute;
+		
+		z-index: 0;
+		
+	}
+	
+	#space .weather-snow
+	{
+		width: inherit;
+		height: inherit;
+		
+		position: absolute;
+		
+		z-index: 0;
+		
+	}
+	

@@ -16,6 +16,48 @@
 	function phoneRotate(event)
 	{
 		touchOffsetUpdate();
+		
+		var base_css;
+		
+		if(window.innerWidth < window.innerHeight)
+		{
+			trace("DISPLAY_OK");
+			
+			$("#displayError").removeClass("displayErrorShow").addClass("displayErrorHide");
+		
+			base_css = 	{
+							"-webkit-transition-delay"	: "0.6s",
+							"transition-delay" 			: "0.6s",
+							"opacity"					: "0"
+						};
+		}
+		
+		else
+		{
+			trace("DISPLAY_FAIL");
+			
+			$("#displayError").removeClass("displayErrorHide").addClass("displayErrorShow");
+
+			base_css = 	{
+							"-webkit-transition-delay"	: "0s",
+							"transition-delay" 			: "0s",
+							"opacity"					: "1"
+						};
+		}
+		
+		$("#displayError-base").css(base_css);
+		
+/*
+		if(window.orientation === 0)
+		{
+			trace("CORRECT " + window.innerWidth + " " + window.innerHeight);
+		}
+		
+		else
+		{
+			trace("LANDSCAPE " + window.innerWidth + " " + window.innerHeight);
+		}
+*/
 	}
 	
 	function init()

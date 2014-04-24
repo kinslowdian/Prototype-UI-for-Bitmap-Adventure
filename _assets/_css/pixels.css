@@ -77,6 +77,92 @@
 		background-repeat: no-repeat;
 		background-size: 120px 120px;
 	}
+
+	.pixels_rain0
+	{
+		background-image: url(../_img/rain_0_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;
+	}
+	
+	.pixels_rain1
+	{
+		background-image: url(../_img/rain_1_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;		
+	}
+	
+	.pixels_rain2
+	{
+		background-image: url(../_img/rain_2_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;		
+	}
+	
+	.pixels_snow0
+	{
+		background-image: url(../_img/snow_0_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;
+	}
+	
+	.pixels_snow1
+	{
+		background-image: url(../_img/snow_1_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;		
+	}
+	
+	.pixels_snow2
+	{
+		background-image: url(../_img/snow_2_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;		
+	}
+	
+	.pixels_wind0
+	{
+		background-image: url(../_img/wind_0_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;
+	}
+	
+	.pixels_wind1
+	{
+		background-image: url(../_img/wind_1_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;		
+	}
+	
+	.pixels_wind2
+	{
+		background-image: url(../_img/wind_2_1x.png);
+		background-position: center top;
+		background-repeat: repeat;
+		background-size: 320px 320px;		
+	}
+	
+	.startPixels
+	{
+		background-image: url(../_img/startSprite_1x.png);
+		background-repeat: no-repeat;
+		background-size: 240px 203px;
+	}
+	
+	.colour-navPink-Pixels
+	{
+		background-image: url(../_img/col_nav-pink_1x.png);
+		background-repeat: repeat;
+		background-size: 100px 100px;
+	}	
 	
 	@media all and (-webkit-min-device-pixel-ratio: 1), all and (min-device-pixel-ratio: 1)
 	{
@@ -118,7 +204,62 @@
 		.pixels_flowerRichCross
 		{
 			background-image: url(../_img/tile_flowersRich_+_1x.png);
-		}		
+		}
+		
+		.pixels_rain0
+		{
+			background-image: url(../_img/rain_0_1x.png);
+		}
+		
+		.pixels_rain1
+		{
+			background-image: url(../_img/rain_1_1x.png);		
+		}
+		
+		.pixels_rain2
+		{
+			background-image: url(../_img/rain_2_1x.png);		
+		}
+		
+		.pixels_snow0
+		{
+			background-image: url(../_img/snow_0_1x.png);
+		}
+		
+		.pixels_snow1
+		{
+			background-image: url(../_img/snow_1_1x.png);		
+		}
+		
+		.pixels_snow2
+		{
+			background-image: url(../_img/snow_2_1x.png);	
+		}
+		
+		.pixels_wind0
+		{
+			background-image: url(../_img/wind_0_1x.png);
+		}
+		
+		.pixels_wind1
+		{
+			background-image: url(../_img/wind_1_1x.png);	
+		}
+		
+		.pixels_wind2
+		{
+			background-image: url(../_img/wind_2_1x.png);		
+		}
+		
+		.startPixels
+		{
+			background-image: url(../_img/startSprite_1x.png);
+		}
+		
+		.colour-navPink-Pixels
+		{
+			background-image: url(../_img/col_nav-pink_1x.png);
+		}				
 	}
 	
 	@media all and (-webkit-min-device-pixel-ratio: 2), all and (min-device-pixel-ratio: 2)
@@ -161,5 +302,60 @@
 		.pixels_flowerRichCross
 		{
 			background-image: url(../_img/tile_flowersRich_+_2x.png);
-		}		
+		}
+		
+		.pixels_rain0
+		{
+			background-image: url(../_img/rain_0_2x.png);
+		}
+		
+		.pixels_rain1
+		{
+			background-image: url(../_img/rain_1_2x.png);		
+		}
+		
+		.pixels_rain2
+		{
+			background-image: url(../_img/rain_2_2x.png);		
+		}
+		
+		.pixels_snow0
+		{
+			background-image: url(../_img/snow_0_2x.png);
+		}
+		
+		.pixels_snow1
+		{
+			background-image: url(../_img/snow_1_2x.png);		
+		}
+		
+		.pixels_snow2
+		{
+			background-image: url(../_img/snow_2_2x.png);	
+		}
+		
+		.pixels_wind0
+		{
+			background-image: url(../_img/wind_0_2x.png);
+		}
+		
+		.pixels_wind1
+		{
+			background-image: url(../_img/wind_1_2x.png);	
+		}
+		
+		.pixels_wind2
+		{
+			background-image: url(../_img/wind_2_2x.png);		
+		}
+		
+		.startPixels
+		{
+			background-image: url(../_img/startSprite_2x.png);
+		}
+		
+		.colour-navPink-Pixels
+		{
+			background-image: url(../_img/col_nav-pink_2x.png);
+		}					
 	}

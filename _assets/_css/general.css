@@ -1,3 +1,25 @@
+/* ------------------------------------------------------------------- FONT */
+/* ------------------------------------------------------------------- FONT */
+
+
+	.font-dosis
+	{
+		font-family: 'Dosis', sans-serif;
+		font-weight: lighter;
+	}
+	
+	.font-dosis, p
+	{
+		-webkit-font-smoothing	: antialiased;
+		font-smoothing			: antialiased;
+	}
+	
+	
+/* ------------------------------------------------------------------- FONT */
+/* ------------------------------------------------------------------- FONT */
+			
+			
+			
 			*
 			{
 				margin: 0;
@@ -21,6 +43,176 @@
 				visibility: hidden;
 				overflow: hidden;
 			}
+			
+			#windTest
+			{
+				width: 100%;
+				height: 100%;
+				
+				overflow: hidden;
+				
+				position: absolute;
+				
+				z-index: 1;				
+			}
+			
+			.windy
+			{
+				width: 200%;
+				height: 100%;
+				
+				position: absolute;			
+			}
+			
+			.tween-windy
+			{
+				-webkit-animation	: tweenWindyFrames 2s linear infinite;
+				animation			: tweenWindyFrames 2s linear infinite;				
+			}
+			
+			@-webkit-keyframes tweenWindyFrames
+			{
+				from	{ -webkit-transform: translateX(0px); }
+				to		{ -webkit-transform: translateX(-320px); }
+			}
+			
+			@keyframes tweenWindyFrames
+			{
+				from	{ transform: translateX(0px); }
+				to		{ transform: translateX(-320px); }
+			}
+			
+			.windy-0
+			{
+				-webkit-animation-duration: 2.2s;
+				animation-duration: 2.2s;
+				
+				z-index: 0;
+			}
+			
+			.windy-1
+			{
+				-webkit-animation-duration: 1.6s;
+				animation-duration: 1.6s;
+				
+				z-index: 1;
+			}
+			
+			.windy-2
+			{
+				-webkit-animation-duration: 1s;
+				animation-duration: 1s;
+				
+				z-index: 2;
+			}
+			
+			.rain
+			{
+				width: 100%;
+				height: 200%;
+				
+				position: absolute;
+				
+				top: -100%;			
+			}
+			
+			.tween-rain
+			{
+				-webkit-animation	: tweenRainFrames 2s linear infinite;
+				animation			: tweenRainFrames 2s linear infinite;				
+			}
+			
+			@-webkit-keyframes tweenRainFrames
+			{
+				from	{ -webkit-transform: translateY(0px); }
+				to		{ -webkit-transform: translateY(320px); }
+			}
+			
+			@keyframes tweenRainFrames
+			{
+				from	{ transform: translateY(0px); }
+				to		{ transform: translateY(320px); }
+			}
+			
+			.rain-0
+			{
+				-webkit-animation-duration: 0.6s;
+				animation-duration: 0.6s;
+				
+				z-index: 0;
+			}
+			
+			.rain-1
+			{
+				-webkit-animation-duration: 0.4s;
+				animation-duration:0.4s;
+				
+				z-index: 1;
+			}
+			
+			.rain-2
+			{
+				-webkit-animation-duration: 0.2s;
+				animation-duration: 0.2s;
+				
+				z-index: 2;
+			}
+			
+			
+			.snow
+			{
+				width: 200%;
+				height: 200%;
+				
+				position: absolute;
+				
+				top: -100%;
+				right: -100%;			
+			}
+			
+			.tween-snow
+			{
+				-webkit-animation	: tweenSnowFrames 2s linear infinite;
+				animation			: tweenSnowFrames 2s linear infinite;				
+			}
+			
+			@-webkit-keyframes tweenSnowFrames
+			{
+				from	{ -webkit-transform: translate(0px, 0px); }
+				to		{ -webkit-transform: translate(-320px, 320px); }
+			}
+			
+			@keyframes tweenSnowFrames
+			{
+				from	{ -webkit-transform: translate(0px, 0px); }
+				to		{ -webkit-transform: translate(-320px, 320px); }
+			}
+			
+			.snow-0
+			{
+				-webkit-animation-duration: 2s;
+				animation-duration: 2s;
+				
+				z-index: 0;
+			}
+			
+			.snow-1
+			{
+				-webkit-animation-duration: 4s;
+				animation-duration: 4s;
+				
+				z-index: 1;
+			}
+			
+			.snow-2
+			{
+				-webkit-animation-duration: 6s;
+				animation-duration: 6s;
+				
+				z-index: 2;
+			}
+			
+			
 			
 			#wrapper
 			{
@@ -550,6 +742,195 @@
 		/* background: rgba(255, 0, 51, 0.4); */
 	}
 	
+	
+	
+	#displayError
+	{
+		width: 100%;
+		height: 100%;
+		
+		overflow: hidden;
+		
+		position: absolute;
+		
+		background: #20202a;
+		
+		z-index: 1000;
+		
+		pointer-events: none;
+	}
+	
+	.tween-displayError
+	{
+		-webkit-transition	: -webkit-transform 0.6s ease-in-out;
+		transition			: transform 0.6s ease-in-out;
+	}
+	
+	.displayErrorShow
+	{
+		-webkit-transform	: translateY(0%);
+		transform			: translateY(0%);
+	}
+	
+	.displayErrorHide
+	{
+		-webkit-transform	: translateY(-100%);
+		transform			: translateY(-100%);		
+	}
+	
+	.displayError-top
+	{
+		width: inherit;
+		height: 50%;
+		
+		position: absolute;
+		
+		top: 0;
+		
+		z-index: 2;
+	}
+	
+	
+	.displayError-top .message
+	{
+		width: 90%;
+		
+		position: absolute;
+		
+		top: 30%; left: 0; right: 0; bottom: 0;
+		
+		margin: auto;
+	}
+	
+	.displayError-top .message p
+	{
+		width: 100%;
+		
+		display: inline-block;
+		
+		font-size: 40px;
+		text-align: center;
+		
+		color: #e5ffb2;
+		
+		position: absolute;
+	}
+	
+	.displayError-btm
+	{
+		width: inherit;
+		height: 50%;
+		
+		position: absolute;
+		
+		top: 50%;
+		
+		z-index: 1;
+	}
+	
+	#displayError-base
+	{
+		width: 100%;
+		height: 100%;
+		
+		/* background: lime; */
+		
+		/* opacity: 1; */
+		
+		pointer-events: none;
+		
+		position: absolute;
+		
+		z-index: 999;
+	}
+	
+	.tween-displayError-base
+	{
+		-webkit-transition	: opacity 0.3s linear 0s;
+		transition			: opacity 0.3s linear 0s;		
+	}
+	
+	.displayError-btm .boss-head-fullBleed
+	{
+		width: 30px;
+		height: 35px;
+		
+		background-position: -200px 0px;
+		
+		position: absolute;
+		
+		left: 0; right: 0; top: -20px; bottom: 0;
+		
+		margin: 0 auto;
+		
+		
+		z-index: 1;
+	}
+	
+	.displayError-btm .boss-body-fullBleed
+	{
+		width: 200px;
+		height: 100%;
+		
+		background-position: 0px 0px;
+		
+		position: absolute;
+		
+		left: 0; right: 0; top: -3px; bottom: 0;
+		
+		margin: 0 auto;
+		
+		
+		z-index: 0;		
+	}
+	
+	.displayError-btm .boss-hand-fullBleed
+	{
+		width: 40px;
+		height: 26px;
+		
+		position: absolute;
+		
+		/* bottom: 55%; */
+		
+		bottom: 16%;
+		
+		z-index: 1;
+	}
+	
+	.displayError-btm .boss-hand-fullBleed-L
+	{
+		background-position: -200px  -35px;
+		
+		left: 3.125%;
+	}
+	
+	.displayError-btm .boss-hand-fullBleed-R
+	{
+		background-position: -200px  -61px;
+	
+		right: 3.125%;
+	}
+	
+	.tween-boss-head-start
+	{
+		-webkit-animation	: tweenBossHeadStartFrames 1s ease-in-out infinite;
+		animation			: tweenBossHeadStartFrames 1s ease-in-out infinite;
+	}
+
+	@-webkit-keyframes tweenBossHeadStartFrames
+	{
+		0%		{ -webkit-transform : translateY(0px); }
+		50%		{ -webkit-transform	: translateY(10px); }
+		100%	{ -webkit-transform	: translateY(0px); }
+	}
+	
+	@keyframes tweenBossHeadStartFrames
+	{
+		0%		{ transform : translateY(0px); }
+		50%		{ transform	: translateY(10px); }
+		100%	{ transform	: translateY(0px); }
+	}
 	
 	
 	
