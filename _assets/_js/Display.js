@@ -48,7 +48,7 @@
 		if(DISPLAY.screenUpdateUse)
 		{
 			// fix blurring:
-			DISPLAY.center_X		= Math.floor(($("#wrapper").width() - $("#content").width()) * 0.5);
+			DISPLAY.center_X		= Math.floor(($("#roam_wrapper").width() - $("#roam_content").width()) * 0.5);
 			
 			DISPLAY.center_y	= 0;
 			
@@ -60,10 +60,10 @@
 						"transform" 		: "translateX(" + x + "px)"
 					};
 				
-			$("#content").css(css_x);
+			$("#roam_content").css(css_x);
 			
 			
-			DISPLAY.stageOffset = $("#content").offset().left;
+			DISPLAY.stageOffset = $("#roam_content").offset().left;
 			
 			DISPLAY.viewHeight = $(document).height();
 			
@@ -80,7 +80,7 @@
 	
 	function screenDivision()
 	{
-		DISPLAY._height <= 480 ?  DISPLAY.screenSections = 240 : DISPLAY.screenSections = 400;
+		DISPLAY._height <= 480 ?  DISPLAY.screenSections = 240 : DISPLAY.screenSections = 320; // 400
 	}
 	
 	function moveStageTest()
@@ -117,10 +117,13 @@
 		{				
 			if(PORTAL_TRAVEL != null || PORTAL_TRAVEL != undefined)
 			{
-				//mapPlayer_entry();
-				exitFrame = setTimeout(mapPlayer_entry, 1000);
-				
-				PORTAL_TRAVEL = null;
+				if(!game_levelChange)
+				{
+					// mapPlayer_entry();
+					exitFrame = setTimeout(mapPlayer_entry, 1000);
+					
+					PORTAL_TRAVEL = null;	
+				}
 			}
 		}
 	}
@@ -155,10 +158,13 @@
 		
 		if(PORTAL_TRAVEL != null || PORTAL_TRAVEL != undefined)
 		{
-			// mapPlayer_entry();
-			exitFrame = setTimeout(mapPlayer_entry, 1000);
-			
-			PORTAL_TRAVEL = null;
+			if(!game_levelChange)
+			{
+				// mapPlayer_entry();
+				exitFrame = setTimeout(mapPlayer_entry, 1000);
+				
+				PORTAL_TRAVEL = null;	
+			}
 		}
 		
 /*

@@ -3,6 +3,8 @@
 	
 	var ext_html_path;
 	
+	var ext_html_data;
+	
 	var LEVEL_MAIN;	
 	
 	var json_local_root = "_assets/_data/";
@@ -73,7 +75,7 @@
 	
 	function html_lib_store()
 	{	
-		LIB_DATA = $("#memory").html();
+		ext_html_data = $("#memory").html();
 		
 		temp_callback_html();
 	}
@@ -94,9 +96,10 @@
 	
 	function html_lib_reuse()
 	{
-		$("#memory").html(LIB_DATA);
+		$("#memory").html(ext_html_data);
 		
-		temp_callback_html();
+		// IF FAIL ADD BACK IN
+		// temp_callback_html();
 	}	
 	
 	// --------------------------------------------- HTML TOOL
@@ -181,12 +184,31 @@
 	
 	function gameData_get_loaded()
 	{
+		// var save_ARR = new Array();
+		
 		if(!ext_html_path)
 		{
 			ext_html_path = Logic.dat_ROM["_HTML-EXT"]["file_path"]["url"];
 		}
 		
-		trace(Logic.dat_ROM);
+		// trace(Logic.dat_ROM);
+
+		// trace(Logic.dat_ROM["_LEVELS"]);
+
+/*
+		for(var prop in Logic.dat_ROM["_LEVELS"])
+		{
+			// trace(Logic.dat_ROM["_LEVELS"][prop]);
+			
+			for(var j in Logic.dat_ROM["_LEVELS"][prop]["portal"])
+			{
+				save_ARR.push(Logic.dat_ROM["_LEVELS"][prop]["portal"][j]);
+			}
+		}
+*/
+		
+		// trace(save_ARR);
+		
 		
 		// prepIntroDataInit();
 		
@@ -197,7 +219,7 @@
 	
 	function level_init()
 	{
-		LEVEL_MAIN = new LEVEL(Logic.dat_ROM["level" + ROM.mapLevel]["levelSettings"]);
+		LEVEL_MAIN = new LEVEL(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["levelSettings"]);
 		
 		LEVEL_MAIN.create();		
 		
@@ -206,7 +228,11 @@
 		// SET UP LEVEL INFO NOTICE
 		
 		// SET WEATHER HERE?
-	
+		
+		if(game_levelChange)
+		{
+			game_levelChange = false;
+		}
 		
 		level_form();
 	}
@@ -215,33 +241,78 @@
 	{
 		var i;
 		
+/*
 		i = 0;
 		
 		// WALLS BUSHES
-		$.each(Logic.dat_ROM["level" + ROM.mapLevel]["texture"]["BUSH"], function(item)
+		$.each(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["BUSH"], function(item)
 		{
-			var b = new level_create_basic(Logic.dat_ROM["level" + ROM.mapLevel]["texture"]["BUSH"][item], i, "BUSH", ".field-area");
+			var b = new level_create_basic(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["BUSH"][item], i, "BUSH", ".field-area");
 			
 			b.create();
 			
 			i++;
 		});
+*/
 		
+		if(ext_html_data)
+		{
+			html_lib_reuse();
+		}
 		
 		i = 0;
 		
-		// FLOWERS NON BLOCKING ART
-		$.each(Logic.dat_ROM["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"], function(item)
+		for(var object_bush in Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["BUSH"])
 		{
-			var f = new level_create_basic(Logic.dat_ROM["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"][item], i, "FLOWER_LIGHT", ".field-area");
+			var b = new level_create_basic(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["BUSH"][object_bush], i, "BUSH", ".field-area");
+			
+			b.create();
+			
+			i++;
+		}
+		
+		
+/*
+		i = 0;
+		
+		// FLOWERS NON BLOCKING ART
+		$.each(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"], function(item)
+		{
+			var f = new level_create_basic(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"][item], i, "FLOWER_LIGHT", ".field-area");
 			
 			f.create();
 			
 			i++;
 		});
-		
+*/
+
 		i = 0;
 		
+		for(var object_flower in Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"])
+		{
+			var f = new level_create_basic(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"][object_flower], i, "FLOWER_LIGHT", ".field-area");
+			
+			f.create();
+			
+			i++;			
+		}
+		
+		if(!portalsOpened)
+		{
+			portalRead();
+			
+			portalsOpened = true;
+		}
+		
+		for(var object_portal in portals_ARR)
+		{
+			if(ROM.mapLevel == portals_ARR[object_portal].spawn)
+			{
+				portals_ARR[object_portal].build();	
+			}
+		}
+		
+/*
 		$.each(Logic.dat_ROM["level" + ROM.mapLevel]["portal"], function(item)
 		{	
 			var p = new portal(Logic.dat_ROM["level" + ROM.mapLevel]["portal"][item], ROM.mapLevel, ".portal-area");
@@ -256,6 +327,13 @@
 			i++;
 		
 		});
+*/
 		
 		html_lib_empty();	
+	}
+	
+	function level_clear()
+	{
+		$(".portal-area").html("");
+		$(".field-area").html("");
 	}

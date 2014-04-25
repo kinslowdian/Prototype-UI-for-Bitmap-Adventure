@@ -4,6 +4,10 @@
 	var CONTROL_SIGNAL;
 	
 	var HIT_TEST;
+
+	var track_touchScreen_UI = false;
+	
+	var game_levelChange = false;
 	
 	function mapPlayer_init(playerMover, playerTween, playerWalkTweenX, playerWalkTweenY, playerFadeTarget, hitTestArea)
 	{
@@ -44,21 +48,27 @@
 		{
 			CONTROL_SIGNAL.enableTouch = true;
 			
-			if(window.innerWidth < window.innerHeight)
-			{
-				$("#displayError").addClass("displayErrorHide");
-				$("#displayError-base").css("opacity", 0);
-			}
+			// if(window.innerWidth < window.innerHeight)
+			// {
+			// 	$("#displayErrorWrapper .displayError").addClass("displayErrorHide");
+			// 	$("#displayErrorWrapper .displayError-base").css("opacity", 0);
+			// }
 			
-			else
-			{
-				$("#displayError").addClass("displayErrorShow");
-				$("#displayError-base").css("opacity", 1);
-			}
+			// else
+			// {
+			// 	$("#displayErrorWrapper .displayError").addClass("displayErrorShow");
+			// 	$("#displayErrorWrapper .displayError-base").css("opacity", 1);
+			// }
 			
-			$("#displayError").addClass("tween-displayError");
-			$("#displayError-base").addClass("tween-displayError-base");
+			// $("#displayErrorWrapper .displayError").addClass("tween-displayError");
+			// $("#displayErrorWrapper .displayError-base").addClass("tween-displayError-base");
+
+
+			$(window)[0].addEventListener("touchstart", screenTouchMainListen, false);
+			$(window)[0].addEventListener("touchend", screenTouchMainListen, false);
 			
+			phoneRotate(null);
+
 			trace("DEVICE === TOUCH");
 		}
 		
@@ -70,7 +80,7 @@
 		
 			$("#touchPad").remove();
 			
-			$("#displayError").remove();
+			$("#displayErrorWrapper").remove();
 		}
 		
 		CONTROL_SIGNAL.data = {};
@@ -120,8 +130,10 @@
 		{
 			if(CONTROL_SIGNAL.enableTouch)
 			{
-				$(window)[0].addEventListener("touchstart", touchDisplay, false);
-				$(window)[0].addEventListener("touchend", touchDisplay, false);
+				track_touchScreen_UI = true;
+
+				// $(window)[0].addEventListener("touchstart", touchDisplay, false);
+				// $(window)[0].addEventListener("touchend", touchDisplay, false);
 				
 				$("#touchPad-full")[0].addEventListener("touchstart", touchFind, false);
 				$("#touchPad-full")[0].addEventListener("touchmove", touchFind, false);
@@ -144,8 +156,10 @@
 		{
 			if(CONTROL_SIGNAL.enableTouch)
 			{
-				$(window)[0].removeEventListener("touchstart", touchDisplay, false);
-				$(window)[0].removeEventListener("touchend", touchDisplay, false);
+				track_touchScreen_UI = false;
+
+				// $(window)[0].removeEventListener("touchstart", touchDisplay, false);
+				// $(window)[0].removeEventListener("touchend", touchDisplay, false);
 				
 				$("#touchPad-full")[0].removeEventListener("touchstart", touchFind, false);
 				$("#touchPad-full")[0].removeEventListener("touchmove", touchFind, false);
@@ -240,6 +254,16 @@
 	}
 */
 	
+	function screenTouchMainListen(event)
+	{
+		event.preventDefault();
+
+		if(track_touchScreen_UI)
+		{
+			touchDisplay(event);
+		}
+	}
+
 	function touchDisplay(event)
 	{
 		var css_max;
@@ -819,9 +843,7 @@
 			{
 				HIT_TEST.hit_portal = true;
 				
-				HIT_TEST.hit_portal_id = hit_id;
-				
-				alert(HIT_TEST.hit_portal_id);	
+				HIT_TEST.hit_portal_id = hit_id;	
 			}
 			
 			if($(HIT_TEST.hits[0]).attr("data-npc") === "enemy")

@@ -214,7 +214,7 @@
 			
 			
 			
-			#wrapper
+			#roam_wrapper
 			{
 				width: 100%;
 				height: 100%;
@@ -243,7 +243,7 @@
 				background: #6bd0ad;				
 			}
 			
-			#content
+			#roam_content
 			{
 				width: 1280px;
 				height: 2400px; /* 2000px */
@@ -741,10 +741,29 @@
 		
 		/* background: rgba(255, 0, 51, 0.4); */
 	}
+
+	#displayErrorWrapper
+	{
+		width: 100%;
+		height: 100%;
+		
+		overflow: hidden;
+		
+		position: absolute;
+		
+		z-index: 1000;
+		
+		pointer-events: none;		
+	}
+
+/*	#displayErrorWrapper div
+	{
+		pointer-events: none;
+	}*/
 	
 	
 	
-	#displayError
+	#displayErrorWrapper .displayError
 	{
 		width: 100%;
 		height: 100%;
@@ -755,30 +774,30 @@
 		
 		background: #20202a;
 		
-		z-index: 1000;
+		z-index: 1;
 		
-		pointer-events: none;
+		/*pointer-events: none;*/
 	}
 	
-	.tween-displayError
+	#displayErrorWrapper .tween-displayError
 	{
 		-webkit-transition	: -webkit-transform 0.6s ease-in-out;
 		transition			: transform 0.6s ease-in-out;
 	}
 	
-	.displayErrorShow
+	#displayErrorWrapper .displayErrorShow
 	{
 		-webkit-transform	: translateY(0%);
 		transform			: translateY(0%);
 	}
 	
-	.displayErrorHide
+	#displayErrorWrapper .displayErrorHide
 	{
 		-webkit-transform	: translateY(-100%);
 		transform			: translateY(-100%);		
 	}
 	
-	.displayError-top
+	#displayErrorWrapper .displayError-top
 	{
 		width: inherit;
 		height: 50%;
@@ -791,7 +810,7 @@
 	}
 	
 	
-	.displayError-top .message
+	#displayErrorWrapper .displayError-top .message
 	{
 		width: 90%;
 		
@@ -802,7 +821,7 @@
 		margin: auto;
 	}
 	
-	.displayError-top .message p
+	#displayErrorWrapper .displayError-top .message p
 	{
 		width: 100%;
 		
@@ -816,7 +835,7 @@
 		position: absolute;
 	}
 	
-	.displayError-btm
+	#displayErrorWrapper .displayError-btm
 	{
 		width: inherit;
 		height: 50%;
@@ -828,7 +847,7 @@
 		z-index: 1;
 	}
 	
-	#displayError-base
+	#displayErrorWrapper .displayError-base
 	{
 		width: 100%;
 		height: 100%;
@@ -837,20 +856,24 @@
 		
 		/* opacity: 1; */
 		
+		/*FIX*/
+		opacity: 0;
+		/*FIX*/
+		
 		pointer-events: none;
 		
 		position: absolute;
 		
-		z-index: 999;
+		z-index: 0;
 	}
 	
-	.tween-displayError-base
+	#displayErrorWrapper .tween-displayError-base
 	{
 		-webkit-transition	: opacity 0.3s linear 0s;
 		transition			: opacity 0.3s linear 0s;		
 	}
 	
-	.displayError-btm .boss-head-fullBleed
+	#displayErrorWrapper .displayError-btm .boss-head-fullBleed
 	{
 		width: 30px;
 		height: 35px;
@@ -867,7 +890,7 @@
 		z-index: 1;
 	}
 	
-	.displayError-btm .boss-body-fullBleed
+	#displayErrorWrapper .displayError-btm .boss-body-fullBleed
 	{
 		width: 200px;
 		height: 100%;
@@ -884,7 +907,7 @@
 		z-index: 0;		
 	}
 	
-	.displayError-btm .boss-hand-fullBleed
+	#displayErrorWrapper .displayError-btm .boss-hand-fullBleed
 	{
 		width: 40px;
 		height: 26px;
@@ -898,21 +921,21 @@
 		z-index: 1;
 	}
 	
-	.displayError-btm .boss-hand-fullBleed-L
+	#displayErrorWrapper .displayError-btm .boss-hand-fullBleed-L
 	{
 		background-position: -200px  -35px;
 		
 		left: 3.125%;
 	}
 	
-	.displayError-btm .boss-hand-fullBleed-R
+	#displayErrorWrapper .displayError-btm .boss-hand-fullBleed-R
 	{
 		background-position: -200px  -61px;
 	
 		right: 3.125%;
 	}
 	
-	.tween-boss-head-start
+	#displayErrorWrapper .tween-boss-head-start
 	{
 		-webkit-animation	: tweenBossHeadStartFrames 1s ease-in-out infinite;
 		animation			: tweenBossHeadStartFrames 1s ease-in-out infinite;

@@ -15,7 +15,10 @@
 	
 	function phoneRotate(event)
 	{
-		touchOffsetUpdate();
+		if(event != null || event != undefined)
+		{
+			touchOffsetUpdate();
+		}
 		
 		var base_css;
 		
@@ -23,7 +26,7 @@
 		{
 			trace("DISPLAY_OK");
 			
-			$("#displayError").removeClass("displayErrorShow").addClass("displayErrorHide");
+			$("#displayErrorWrapper .displayError").removeClass("displayErrorShow").addClass("displayErrorHide");
 		
 			base_css = 	{
 							"-webkit-transition-delay"	: "0.6s",
@@ -36,7 +39,7 @@
 		{
 			trace("DISPLAY_FAIL");
 			
-			$("#displayError").removeClass("displayErrorHide").addClass("displayErrorShow");
+			$("#displayErrorWrapper .displayError").removeClass("displayErrorHide").addClass("displayErrorShow");
 
 			base_css = 	{
 							"-webkit-transition-delay"	: "0s",
@@ -45,7 +48,7 @@
 						};
 		}
 		
-		$("#displayError-base").css(base_css);
+		$("#displayErrorWrapper .displayError-base").css(base_css);
 		
 /*
 		if(window.orientation === 0)
