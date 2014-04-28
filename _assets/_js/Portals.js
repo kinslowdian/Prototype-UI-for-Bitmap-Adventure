@@ -105,14 +105,17 @@
 				{
 					for(var j in portals_ARR)
 					{
-						if(portals_ARR[i].exit == portals_ARR[j].num)
+						if(portals_ARR[i].level == portals_ARR[j].spawn)
 						{
-							PORTAL_TRAVEL = {};
-							PORTAL_TRAVEL = portals_ARR[j];	
-							
-							portalExit();
-							
-							break;	
+							if(portals_ARR[i].exit == portals_ARR[j].num)
+							{
+								PORTAL_TRAVEL = {};
+								PORTAL_TRAVEL = portals_ARR[j];	
+								
+								portalExit();
+								
+								break;	
+							}	
 						}
 					}
 					
@@ -157,6 +160,7 @@
 	
 	function portalExit()
 	{
+		trace("!----- portalExit(); === ");
 		trace(PORTAL_TRAVEL);
 		
 		

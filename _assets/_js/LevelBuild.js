@@ -260,6 +260,14 @@
 			html_lib_reuse();
 		}
 		
+		level_weather();
+		
+		// FLOOR COLOUR
+		
+		$(".field-floor > div").addClass(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["FLOOR"]["class"]);
+		
+		// TREES BUSHES
+		
 		i = 0;
 		
 		for(var object_bush in Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["BUSH"])
@@ -285,7 +293,8 @@
 			i++;
 		});
 */
-
+		// FLOWERS
+		
 		i = 0;
 		
 		for(var object_flower in Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"])
@@ -296,6 +305,8 @@
 			
 			i++;			
 		}
+		
+		// PORTALS (PRE-READ)
 		
 		if(!portalsOpened)
 		{
@@ -332,8 +343,54 @@
 		html_lib_empty();	
 	}
 	
+	function level_weather()
+	{
+		var weather_type = Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["levelSettings"]["weather"];
+		
+		var weather_use = true;
+		var html_data;
+		var html_cont;
+		
+		if(weather_type === "CLEAR")
+		{
+			weather_use = false;
+		}
+		
+		else
+		{
+			if(weather_type === "SNOW")
+			{
+				html_data = html_lib_use("_weather_data_SNOW");	
+				html_cont = ".weather-snow";
+			}
+			
+			if(weather_type === "RAIN")
+			{
+				html_data = html_lib_use("_weather_data_RAIN");	
+				html_cont = ".weather-rain";				
+			}
+			
+			if(weather_type === "WIND")
+			{
+				html_data = html_lib_use("_weather_data_WIND");	
+				html_cont = ".weather-wind";				
+			}
+		}
+		
+		if(weather_use)
+		{
+			$(html_cont).html(html_data);
+		}
+	}
+	
 	function level_clear()
 	{
+		$(".field-floor > div").removeAttr("class");
+		
 		$(".portal-area").html("");
 		$(".field-area").html("");
+		
+		$("#space .weather-snow").html("");
+		$("#space .weather-rain").html("");
+		$("#space .weather-wind").html("");
 	}

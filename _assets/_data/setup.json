@@ -180,7 +180,7 @@
 				"n": 0,
 				"w": 4,
 				"h": 25,
-				"w": [{"weather": "WIND"}],
+				"weather": "SNOW",
 				"t": false,
 				"entry_x": 2,
 				"entry_y": -0.5,
@@ -194,6 +194,11 @@
 			
 			"texture":
 			{
+				"FLOOR":
+				{
+					"class" : "field-floor-default"
+				},
+				
 				"BUSH":
 				{
 					"BUSH_0":
@@ -704,6 +709,11 @@
 			
 			"texture":
 			{
+				"FLOOR":
+				{
+					"class" : "field-floor-default"
+				},
+				
 				"BUSH":
 				{
 					"BUSH_0":

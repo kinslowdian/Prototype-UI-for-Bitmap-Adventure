@@ -97,9 +97,20 @@
 		
 		position: absolute;
 		
-		background: #dfdfd5;
+		/* background: #dfdfd5; */
 	
 		z-index: 0;
+	}
+	
+	.field-floor > div
+	{
+		width: inherit;
+		height: inherit;
+	}
+	
+	.field-floor-default
+	{
+		background: #dfdfd5;
 	}
 	
 	#space
