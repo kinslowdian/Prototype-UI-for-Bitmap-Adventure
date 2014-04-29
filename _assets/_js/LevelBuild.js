@@ -109,22 +109,21 @@
 	{
 		this.settings = settings;
 		this.buildData = {};
+		this.titleData = {};
 	}
 	
 	LEVEL.prototype.create = function()
 	{
-		this.buildData.levelNumber 	= this.settings.n; 
-		this.buildData.block_w 		= this.settings.w * 80;
-		this.buildData.block_h 		= this.settings.h * 80;
-		this.buildData.weather		= this.settings.w;
-		this.buildData.useTime		= this.settings.t;
-		this.buildData.entry_x		= this.settings.entry_x;
-		this.buildData.entry_y		= this.settings.entry_y;
+		this.levelNumber 			= this.settings.n; 
+		this.weather				= this.settings.weather;
+		
+		this.buildData.entry_fall	= this.settings.entry_fall;
 		this.buildData.fall_x		= this.settings.fall_x;
 		this.buildData.fall_y		= this.settings.fall_y;
-		this.buildData.entry_d		= this.settings.entry_d;
-		this.buildData.act			= this.settings.act;
-		this.buildData.title		= this.settings.title;
+		this.buildData.direction	= this.settings.fall_d;
+		
+		this.titleData.act			= this.settings.act;
+		this.titleData.title		= this.settings.title;
 	
 		delete this.settings;
 	}	
@@ -227,33 +226,22 @@
 		
 		// SET UP LEVEL INFO NOTICE
 		
-		// SET WEATHER HERE?
-		
 		if(game_levelChange)
 		{
 			game_levelChange = false;
 		}
 		
 		level_form();
+		
+		// ADD LATER
+		
+		level_player_setup();
 	}
 	
 	function level_form()
 	{
 		var i;
 		
-/*
-		i = 0;
-		
-		// WALLS BUSHES
-		$.each(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["BUSH"], function(item)
-		{
-			var b = new level_create_basic(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["BUSH"][item], i, "BUSH", ".field-area");
-			
-			b.create();
-			
-			i++;
-		});
-*/
 		
 		if(ext_html_data)
 		{
@@ -261,6 +249,8 @@
 		}
 		
 		level_weather();
+		
+		decayBuild();
 		
 		// FLOOR COLOUR
 		
@@ -279,20 +269,6 @@
 			i++;
 		}
 		
-		
-/*
-		i = 0;
-		
-		// FLOWERS NON BLOCKING ART
-		$.each(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"], function(item)
-		{
-			var f = new level_create_basic(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["texture"]["FLOWER_LIGHT"][item], i, "FLOWER_LIGHT", ".field-area");
-			
-			f.create();
-			
-			i++;
-		});
-*/
 		// FLOWERS
 		
 		i = 0;
@@ -323,54 +299,36 @@
 			}
 		}
 		
-/*
-		$.each(Logic.dat_ROM["level" + ROM.mapLevel]["portal"], function(item)
-		{	
-			var p = new portal(Logic.dat_ROM["level" + ROM.mapLevel]["portal"][item], ROM.mapLevel, ".portal-area");
-			
-			p.portal_open();
-			p.build();
-			
-			portals_ARR.push(p);
-			
-			trace(i);
-			
-			i++;
-		
-		});
-*/
-		
 		html_lib_empty();	
 	}
 	
 	function level_weather()
 	{
-		var weather_type = Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["levelSettings"]["weather"];
-		
 		var weather_use = true;
+		
 		var html_data;
 		var html_cont;
 		
-		if(weather_type === "CLEAR")
+		if(LEVEL_MAIN.weather === "CLEAR")
 		{
 			weather_use = false;
 		}
 		
 		else
 		{
-			if(weather_type === "SNOW")
+			if(LEVEL_MAIN.weather === "SNOW")
 			{
 				html_data = html_lib_use("_weather_data_SNOW");	
 				html_cont = ".weather-snow";
 			}
 			
-			if(weather_type === "RAIN")
+			if(LEVEL_MAIN.weather === "RAIN")
 			{
 				html_data = html_lib_use("_weather_data_RAIN");	
 				html_cont = ".weather-rain";				
 			}
 			
-			if(weather_type === "WIND")
+			if(LEVEL_MAIN.weather === "WIND")
 			{
 				html_data = html_lib_use("_weather_data_WIND");	
 				html_cont = ".weather-wind";				
@@ -380,6 +338,42 @@
 		if(weather_use)
 		{
 			$(html_cont).html(html_data);
+		}
+	}
+	
+	function decayBuild()
+	{
+		var decayLength = Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["decay_L"].length;
+		
+		for(var i = 0; i < decayLength; i++)
+		{
+			var final_class_L = Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["decay_L"][i].cut;
+			var final_class_R = Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["decay_R"][i].cut;
+			
+			$(".woodland-darkness-left .landDecayBlock_" + i).addClass(final_class_L);
+			
+			$(".woodland-darkness-right .landDecayBlock_" + i).addClass(final_class_R);
+		}
+	}
+	
+	function level_player_setup()
+	{
+		trace("level_player_setup();");
+		
+		if(LEVEL_MAIN.buildData.entry_fall === "YES" && game_introEntrance)
+		{
+			trace("CATCH");
+			
+			game_introEntrance = false;
+			
+			mapPlayer_spawn(LEVEL_MAIN.buildData.fall_x, LEVEL_MAIN.buildData.fall_y, LEVEL_MAIN.buildData.direction, true);
+			
+			trace(LEVEL_MAIN);
+		}
+		
+		else
+		{
+			portalExit();
 		}
 	}
 	

@@ -74,12 +74,18 @@
 	
 	function temp_callback_json()
 	{
+		trace("temp_callback_json();");
+		
 		html_lib_init();
 	}
 	
 	function temp_callback_html()
 	{
+		trace("temp_callback_html();");
+		
 		display_init();
+		
+		mapPlayer_init("player-block", "tween-player-block", "tween-player-walkX", "tween-player-walkY", "map-goat", "preHitTest");
 		
 		level_init();
 	
@@ -103,10 +109,9 @@
 	
 	function level_drawn()
 	{
-		controlSignal_init();
-		mapPlayer_init("player-block", "tween-player-block", "tween-player-walkX", "tween-player-walkY", "map-goat", "preHitTest");	
+		controlSignal_init();	
 		
-		mapPlayer_spawn(2.5, 1.5, "DOWN", true);
+		// mapPlayer_spawn(2.5, 1.5, "DOWN", true);
 		
 		test = setTimeout(forced, 1000);
 		

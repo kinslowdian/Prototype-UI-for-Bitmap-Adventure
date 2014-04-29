@@ -147,7 +147,7 @@
 								
 								level_init();
 								
-								portalExit();
+								// portalExit();
 								
 								break;
 							}

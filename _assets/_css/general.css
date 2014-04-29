@@ -347,8 +347,118 @@
 				width: inherit;
 				height: inherit;
 				
+/*
 				background: url(../_img/walk.png) no-repeat left top;
-				background-size: 40px 40px;				
+				background-size: 40px 40px;	
+*/			
+			}
+			
+			#player-block .map-goat .player-sprite .map-goat-head
+			{
+				width: inherit;
+				height: inherit;
+				
+				background-position: 0px 0px;
+				
+				position: absolute;
+				
+				z-index: 1;
+			}
+			
+			#player-block .map-goat .player-sprite .map-goat-hand-L
+			{
+				width: inherit;
+				height: inherit;
+				
+				background-position: 0px -40px;
+				
+				position: absolute;
+				
+				z-index: 2;				
+			}
+			
+			#player-block .map-goat .player-sprite .map-goat-hand-R
+			{
+				width: inherit;
+				height: inherit;
+				
+				background-position: -40px -40px;
+				
+				position: absolute;
+				
+				z-index: 2;				
+			}
+			
+			#player-block .map-goat .player-sprite .map-goat-body
+			{
+				width: inherit;
+				height: inherit;
+				
+				background-position: -40px 0px;
+				
+				position: absolute;
+				
+				z-index: 0;				
+			}
+			
+			.tween-map-goat-head
+			{
+				-webkit-animation	: tweenMapGoatHeadFrames 0.4s ease-in-out infinite;
+				animation			: tweenMapGoatHeadFrames 0.4s ease-in-out infinite;
+			}
+			
+			@-webkit-keyframes tweenMapGoatHeadFrames
+			{
+				0%		{-webkit-transform: translateY(0px);}
+				50%		{-webkit-transform: translateY(-2px);}
+				100%	{-webkit-transform: translateY(0px);}
+			}
+			
+			@keyframes tweenMapGoatHeadFrames
+			{
+				0%		{transform: translateY(0px);}
+				50%		{transform: translateY(-2px);}
+				100%	{transform: translateY(0px);}
+			}
+			
+			.tween-map-goat-hand-L
+			{
+				-webkit-animation	: tweenMapGoatHandL_Frames 0.6s ease-in-out infinite;
+				animation			: tweenMapGoatHandL_Frames 0.6s ease-in-out infinite;
+			}
+			
+			@-webkit-keyframes tweenMapGoatHandL_Frames
+			{
+				0%		{-webkit-transform: translateX(0px);}
+				50%		{-webkit-transform: translateX(2px);}
+				100%	{-webkit-transform: translateX(0px);}
+			}
+			
+			@keyframes tweenMapGoatHandL_Frames
+			{
+				0%		{transform: translateX(0px);}
+				50%		{transform: translateX(2px);}
+				100%	{transform: translateX(0px);}
+			}
+			
+			.tween-map-goat-hand-R
+			{
+				-webkit-animation	: tweenMapGoatHandR_Frames 0.6s ease-in-out infinite;
+				animation			: tweenMapGoatHandR_Frames 0.6s ease-in-out infinite;
+			}
+			
+			@-webkit-keyframes tweenMapGoatHandR_Frames
+			{
+				0%		{-webkit-transform: translateX(0px);}
+				50%		{-webkit-transform: translateX(-2px);}
+				100%	{-webkit-transform: translateX(0px);}
+			}
+			
+			@keyframes tweenMapGoatHandR_Frames
+			{
+				0%		{transform: translateX(0px);}
+				50%		{transform: translateX(-2px);}
+				100%	{transform: translateX(0px);}
 			}
 			
 			.tween-player-walkX
@@ -701,8 +811,10 @@
 	
 	.woodland-darkness-right
 	{
+/*
 		-webkit-transform: scaleX(-1);
 		transform: scaleX(-1);
+*/
 		
 		right: 0;
 	}
@@ -719,6 +831,56 @@
 		
 		z-index: 2;
 	}
+	
+	.landDecay_l_0
+	{
+		background-position: 0 0;
+	}
+	
+	.landDecay_l_1
+	{
+		background-position: -240px 0;
+	}
+	
+	.landDecay_l_2
+	{
+		background-position: -480px 0;
+	}
+	
+	.landDecay_l_3
+	{
+		background-position: -720px 0;
+	}
+	
+	.landDecay_l_4
+	{
+		background-position: -960px 0;
+	}
+	
+	.landDecay_r_0
+	{
+		background-position: 0 -400px;
+	}
+	
+	.landDecay_r_1
+	{
+		background-position: -240px -400px;
+	}
+	
+	.landDecay_r_2
+	{
+		background-position: -480px -400px;
+	}
+	
+	.landDecay_r_3
+	{
+		background-position: -720px -400px;
+	}
+	
+	.landDecay_r_4
+	{
+		background-position: -960px -400px;
+	}	
 	
 	
 	.stage-view-y

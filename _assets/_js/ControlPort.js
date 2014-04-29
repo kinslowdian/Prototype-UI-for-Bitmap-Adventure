@@ -9,6 +9,8 @@
 	
 	var game_levelChange = false;
 	
+	var game_introEntrance = true;
+	
 	function mapPlayer_init(playerMover, playerTween, playerWalkTweenX, playerWalkTweenY, playerFadeTarget, hitTestArea)
 	{
 		MAP_PLAYER = {};
