@@ -11,7 +11,7 @@
 	
 	var game_introEntrance = true;
 	
-	function mapPlayer_init(playerMover, playerTween, playerWalkTweenX, playerWalkTweenY, playerFadeTarget, hitTestArea)
+	function mapPlayer_init(playerMover, playerTween, playerWalkTweenX, playerWalkTweenY, playerWalkStop, playerWalkLoop, playerFadeTarget, hitTestArea)
 	{
 		MAP_PLAYER = {};
 		
@@ -28,6 +28,8 @@
 		MAP_PLAYER.playerWalkTween	= "";
 		MAP_PLAYER.playerWalkTweenX = playerWalkTweenX;
 		MAP_PLAYER.playerWalkTweenY = playerWalkTweenY;
+		MAP_PLAYER.playerWalkStop	= playerWalkStop;
+		MAP_PLAYER.playerWalkLoop	= playerWalkLoop;
 		MAP_PLAYER.playerFadeTarget = playerFadeTarget;
 		MAP_PLAYER.hitTestArea 		= hitTestArea;
 		 
@@ -145,6 +147,7 @@
 				{
 					touchDisplay(null);	
 				}
+				
 			}
 			
 			else
@@ -262,6 +265,8 @@
 
 		if(track_touchScreen_UI)
 		{
+			touchFeedback();
+			
 			touchDisplay(event);
 		}
 	}
@@ -527,7 +532,10 @@
 		if(CONTROL_SIGNAL.data.moveDirection === "STILL")
 		{
 			$("#" + CONTROL_SIGNAL.data.indicator).css("opacity", 0);
+		
+			CONTROL_SIGNAL.data.indicator = "";
 		}
+		
 		
 		else
 		{
@@ -738,6 +746,8 @@
 				$("." + MAP_PLAYER.playerFadeTarget).css("opacity", 0);
 			}
 			
+			$("#" + MAP_PLAYER.playerMover + " .player-sprite .map-goat-legs").removeClass(MAP_PLAYER.playerWalkStop).addClass(MAP_PLAYER.playerWalkLoop);
+			
 			
 			$("." + MAP_PLAYER.playerTween)[0].addEventListener("webkitTransitionEnd", mapPlayer_move_end, false);
 			$("." + MAP_PLAYER.playerTween)[0].addEventListener("transitionend", mapPlayer_move_end, false);
@@ -759,7 +769,7 @@
 		MAP_PLAYER.dir = "STILL";
 		
 		$("#" + MAP_PLAYER.playerMover + " .player-sprite").removeClass(MAP_PLAYER.playerWalkTween);
-		
+		$("#" + MAP_PLAYER.playerMover + " .player-sprite .map-goat-legs").removeClass(MAP_PLAYER.playerWalkLoop).addClass(MAP_PLAYER.playerWalkStop);
 		
 		if(MAP_PLAYER.placement.enterMap)
 		{

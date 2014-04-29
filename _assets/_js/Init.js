@@ -85,7 +85,7 @@
 		
 		display_init();
 		
-		mapPlayer_init("player-block", "tween-player-block", "tween-player-walkX", "tween-player-walkY", "map-goat", "preHitTest");
+		mapPlayer_init("player-block", "tween-player-block", "tween-player-walkX", "tween-player-walkY", "tween-mapPlayerWalk_stop", "tween-mapPlayerWalk_loop", "map-goat", "preHitTest");
 		
 		level_init();
 	
