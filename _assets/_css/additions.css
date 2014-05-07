@@ -90,6 +90,18 @@
 		z-index: 2;
 	}
 	
+	.woodland-areas
+	{
+		width: inherit;
+		height: inherit;
+		
+		position: absolute;
+		left:0; top:0; right:0; bottom:0;
+		
+		
+		z-index: 1;
+	}
+	
 	.field-floor
 	{
 		width: 320px;
@@ -156,4 +168,83 @@
 		z-index: 0;
 		
 	}
+	
+	
+	
+	
+/* ------------------------------------------------------------------- CLEARING */
+/* ------------------------------------------------------------------- CLEARING */
+
+	.clearing_1x1
+	{
+		width: 80px;
+		height: 80px;
+		
+		position: absolute;
+	}
+	
+	
+	.clearing_2x2
+	{
+		width: 160px;
+		height: 160px;
+		
+		position: absolute;
+	}
+
+	
+	.woodland-clearing-floor
+	{
+		width: inherit;
+		height: inherit;
+		
+		background: #dfdfd5;
+		
+		position: absolute;
+		
+		z-index: 0;
+	}
+	
+	.flowerRichCross
+	{
+		width: 120px;
+		height: 120px;
+		
+		position: absolute;
+		
+		top: 0; left: 0; right: 0; bottom: 0;
+		
+		margin: auto;
+		
+		z-index: 1;
+
+	}
+	
+	.wolfGod
+	{
+		width: 24px;
+		height: 36px;
+		
+		position: absolute;
+		
+		left: 0; right: 0; top: 0; bottom: 0;
+		
+		margin: auto;
+
+		background-position: -182px 0px;
+		
+		z-index: 1;
+	}
+	
+	.wolfGod .battleCute-eyes	
+	{
+		-webkit-transform	: translate(4px, 15px);
+		transform			: translate(4px, 15px);
+		
+		z-index: 1;
+	}
+
+
+/* ------------------------------------------------------------------- CLEARING */
+/* ------------------------------------------------------------------- CLEARING */
 	

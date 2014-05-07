@@ -170,6 +170,40 @@
 		delete this.settings;		
 	};
 	
+	var backgroundExtras = function(settings, container)
+	{
+		this.settings 				= settings;
+		this.buildData				= {};
+		this.buildData.artType		= this.settings.t;
+		this.buildData.html			= html_lib_use("_" + this.buildData.artType);
+		this.buildData.container 	= container; 
+	};
+	
+	backgroundExtras.prototype.create = function()
+	{	
+		this.id					= this.settings.n;
+		
+		this.buildData.block_x 	= this.settings.x;
+		this.buildData.block_y 	= this.settings.y;
+		this.buildData.w 		= this.settings.w * 80;
+		this.buildData.h 		= this.settings.h * 80;
+		this.buildData.x		= this.buildData.block_x * 80;
+		this.buildData.y 		= this.buildData.block_y * 80;
+		
+		this.buildData.css	=	{
+									"-webkit-transform"	: "translate(" + this.buildData.x + "px, " + this.buildData.y + "px)",
+									"transform"			: "translate(" + this.buildData.x + "px, " + this.buildData.y + "px)"
+								};
+								
+								
+		$(this.buildData.container).append(this.buildData.html);
+		$(this.buildData.container + " #_" + this.buildData.artType).attr("id", this.id);
+			
+		$("#" + this.id).css(this.buildData.css);
+		
+		delete this.settings;
+	};	
+	
 	function gameData_get()
 	{
 		Logic = new Object();
@@ -282,6 +316,15 @@
 			i++;			
 		}
 		
+		// BACKGROUND EXTRAS
+		
+		for(var object_bg in Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["clearing"])
+		{
+			var b = new backgroundExtras(Logic.dat_ROM["_LEVELS"]["level" + ROM.mapLevel]["clearing"][object_bg], ".woodland-areas");
+			
+			b.create();
+		}
+		
 		// PORTALS (PRE-READ)
 		
 		if(!portalsOpened)
@@ -383,6 +426,8 @@
 		
 		$(".portal-area").html("");
 		$(".field-area").html("");
+		
+		$(".woodland-areas").html("");
 		
 		$("#space .weather-snow").html("");
 		$("#space .weather-rain").html("");

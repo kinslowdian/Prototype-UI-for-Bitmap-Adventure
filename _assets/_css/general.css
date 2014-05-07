@@ -327,9 +327,30 @@
 			
 			.tween-player-block
 			{
-				-webkit-transition	: -webkit-transform 0.2s ease-in-out;
-				transition			: transform 0.2s ease-in-out;				
+				-webkit-transition	: -webkit-transform 0.24s ease-in-out;
+				transition			: transform 0.24s ease-in-out;				
 			}
+			
+			.mapPlayer_head_default
+			{
+				background-position: 0 0;
+			}
+			
+			.mapPlayer_head_happy
+			{
+				background-position: -40px 0;
+			}
+			
+			.mapPlayer_head_dead
+			{
+				background-position: -80px 0;
+			}
+			
+			.mapPlayer_head_fear
+			{
+				background-position: -120px 0;
+			}
+			
 			
 			#player-block .map-goat
 			{
@@ -358,7 +379,7 @@
 				width: inherit;
 				height: inherit;
 				
-				background-position: 0px 0px;
+				/* background-position: 0px 0px; */
 				
 				position: absolute;
 				
@@ -394,7 +415,7 @@
 				width: inherit;
 				height: inherit;
 				
-				background-position: -40px 0px;
+				background-position: -160px 0px;
 				
 				position: absolute;
 				
@@ -412,6 +433,7 @@
 				
 				z-index: 0;
 			}
+
 			
 			.tween-map-goat-head
 			{
@@ -435,48 +457,72 @@
 			
 			.tween-map-goat-hand-L
 			{
-				-webkit-animation	: tweenMapGoatHandL_Frames 0.6s ease-in-out infinite;
-				animation			: tweenMapGoatHandL_Frames 0.6s ease-in-out infinite;
+				-webkit-animation	: tweenMapGoatHandL_Frames 0.6s linear infinite;
+				animation			: tweenMapGoatHandL_Frames 0.6s linear infinite;
 			}
 			
 			@-webkit-keyframes tweenMapGoatHandL_Frames
 			{
+/*
 				0%		{-webkit-transform: translateX(0px);}
 				50%		{-webkit-transform: translateX(2px);}
 				100%	{-webkit-transform: translateX(0px);}
+*/
+
+				0%		{-webkit-transform: translateY(0px);}
+				50%		{-webkit-transform: translateY(-2px);}
+				100%	{-webkit-transform: translateY(0px);}
 			}
 			
 			@keyframes tweenMapGoatHandL_Frames
 			{
+/*
 				0%		{transform: translateX(0px);}
 				50%		{transform: translateX(2px);}
 				100%	{transform: translateX(0px);}
+*/
+
+				0%		{transform: translateY(0px);}
+				50%		{transform: translateY(-2px);}
+				100%	{transform: translateY(0px);}
 			}
 			
 			.tween-map-goat-hand-R
 			{
-				-webkit-animation	: tweenMapGoatHandR_Frames 0.6s ease-in-out infinite;
-				animation			: tweenMapGoatHandR_Frames 0.6s ease-in-out infinite;
+				-webkit-animation	: tweenMapGoatHandR_Frames 0.6s linear infinite;
+				animation			: tweenMapGoatHandR_Frames 0.6s linear infinite;
 			}
 			
 			@-webkit-keyframes tweenMapGoatHandR_Frames
 			{
+/*
 				0%		{-webkit-transform: translateX(0px);}
 				50%		{-webkit-transform: translateX(-2px);}
 				100%	{-webkit-transform: translateX(0px);}
+*/
+
+				0%		{-webkit-transform: translateY(-2px);}
+				50%		{-webkit-transform: translateY(0px);}
+				100%	{-webkit-transform: translateY(-2px);}
 			}
 			
 			@keyframes tweenMapGoatHandR_Frames
 			{
+/*
 				0%		{transform: translateX(0px);}
 				50%		{transform: translateX(-2px);}
 				100%	{transform: translateX(0px);}
+*/
+				0%		{transform: translateX(-2px);}
+				50%		{transform: translateX(0px);}
+				100%	{transform: translateX(-2px);}
+
 			}
 			
 			.tween-mapPlayerWalk_loop
 			{
-				-webkit-animation	: tweenMapPlayerWalkLoopFrames 0.2s steps(8) 0 infinite;
-				animation			: tweenMapPlayerWalkLoopFrames 0.2s steps(8) 0 infinite;
+				-webkit-animation	: tweenMapPlayerWalkLoopFrames 0.12s steps(8) 0 infinite;
+				animation			: tweenMapPlayerWalkLoopFrames 0.12s steps(8) 0 infinite;
 			}
 			
 			.tween-mapPlayerWalk_stop
@@ -498,8 +544,8 @@
 			
 			.tween-player-walkX
 			{
-				-webkit-animation	: tweenPlayerWalkX_Frames 0.2s linear infinite;
-				animation			: tweenPlayerWalkX_Frames 0.2s linear infinite;				
+				-webkit-animation	: tweenPlayerWalkX_Frames 0.24s linear infinite; /* 0.6s */
+				animation			: tweenPlayerWalkX_Frames 0.24s linear infinite; /* 0.6s */			
 			}
 			
 			@-webkit-keyframes tweenPlayerWalkX_Frames
@@ -522,8 +568,8 @@
 			
 			.tween-player-walkY
 			{
-				-webkit-animation	: tweenPlayerWalkY_Frames 0.2s linear infinite;
-				animation			: tweenPlayerWalkY_Frames 0.2s linear infinite;				
+				-webkit-animation	: tweenPlayerWalkY_Frames 0.24s linear infinite; /* 0.6s */
+				animation			: tweenPlayerWalkY_Frames 0.24s linear infinite; /* 0.6s */				
 			}
 			
 			@-webkit-keyframes tweenPlayerWalkY_Frames

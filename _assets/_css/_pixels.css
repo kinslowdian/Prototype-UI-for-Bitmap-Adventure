@@ -417,6 +417,13 @@
 		background-size: 40px 40px;
 	}
 	
+	.pixels_map_enemy40x40
+	{
+		background-image: url(../_img/map_enemySprite40x40_1x.png);
+		background-repeat: no-repeat;
+		background-size: 320px 120px;		
+	}
+	
 
 /* 1x */
 	
@@ -647,6 +654,11 @@
 		.pixels_battleArenaTrees
 		{
 			background-image: url(../_img/tile_battleArenaTrees_1x.png);	
+		}
+		
+		.pixels_map_enemy40x40
+		{
+			background-image: url(../_img/map_enemySprite40x40_1x.png);	
 		}		
 
 		
@@ -900,5 +912,10 @@
 		.pixels_battleArenaTrees
 		{
 			background-image: url(../_img/tile_battleArenaTrees_2x.png);	
+		}
+		
+		.pixels_map_enemy40x40
+		{
+			background-image: url(../_img/map_enemySprite40x40_2x.png);	
 		}				
 	}

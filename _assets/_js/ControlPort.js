@@ -32,6 +32,9 @@
 		MAP_PLAYER.playerWalkLoop	= playerWalkLoop;
 		MAP_PLAYER.playerFadeTarget = playerFadeTarget;
 		MAP_PLAYER.hitTestArea 		= hitTestArea;
+		
+		MAP_PLAYER.playerHead		= "mapPlayer_head_default";
+		MAP_PLAYER.playerHeadCur	= "";
 		 
 		MAP_PLAYER.placement = {};
 		MAP_PLAYER.placement.block_x = 0;
@@ -111,6 +114,8 @@
 	
 	function mapPlayer_ready()
 	{
+		mapPlayer_headCheck();
+		
 		MAP_PLAYER.listen = true;
 		
 		CONTROL_SIGNAL.firstTouch = true;
@@ -648,6 +653,16 @@
 		else
 		{
 			
+		}
+	}
+	
+	function mapPlayer_headCheck()
+	{
+		if(MAP_PLAYER.playerHead !== MAP_PLAYER.playerHeadCur)
+		{
+			$("." + MAP_PLAYER.playerFadeTarget + " .map-goat-head").addClass(MAP_PLAYER.playerHead);
+			
+			MAP_PLAYER.playerHeadCur = MAP_PLAYER.playerHead;
 		}
 	}
 	
