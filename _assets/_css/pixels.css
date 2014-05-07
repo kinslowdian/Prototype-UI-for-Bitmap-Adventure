@@ -183,7 +183,7 @@
 	{
 		background-image: url(../_img/map_enemySprite40x40_1x.png);
 		background-repeat: no-repeat;
-		background-size: 320px 120px;		
+		background-size: 320px 240px;		
 	}	
 	
 	@media all and (-webkit-min-device-pixel-ratio: 1), all and (min-device-pixel-ratio: 1)
