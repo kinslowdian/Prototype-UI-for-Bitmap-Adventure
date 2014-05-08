@@ -122,4 +122,70 @@
 	{
 		trace("forced();");
 		mapPlayer_entry();
+		
+		testPortalScreenInit();
 	}
+	
+	function testPortalScreenInit()
+	{
+		var t;
+		
+		t = setTimeout(testPortalScreen_0, 3000);
+	}
+
+	function testPortalScreen_0()
+	{
+		var css;
+		
+		css = 	{
+					"-webkit-transform"	: "translateX(0%)",
+					"transform"			: "translateX(0%)"
+				};
+				
+		$("#portalScreen .portalScreen_wrapper").css(css);
+		
+		$(".tween-portalScreen_wrapper")[0].addEventListener("webkitTransitionEnd", testPortalScreen_1, false);
+		$(".tween-portalScreen_wrapper")[0].addEventListener("transitionend", testPortalScreen_1, false);
+	}
+	
+	function testPortalScreen_1(event)
+	{
+		var t;
+		
+		$(".tween-portalScreen_wrapper")[0].removeEventListener("webkitTransitionEnd", testPortalScreen_1, false);
+		$(".tween-portalScreen_wrapper")[0].removeEventListener("transitionend", testPortalScreen_1, false);		
+	
+		$("#portalScreen .portalScreen_fade").css("opacity", 0);
+		
+		t = setTimeout(testPortalScreen_2, 2 * 1000);
+		
+	}
+	
+	function testPortalScreen_2()
+	{
+		var css;
+		
+		css = 	{
+					"-webkit-transform"	: "translateY(0%)",
+					"transform"			: "translateY(0%)"
+				};
+				
+		$("#portalScreen .portalScreen_green").css(css);
+	
+		$(".tween-portalScreen_green")[0].addEventListener("webkitTransitionEnd", testPortalScreen_3, false);
+		$(".tween-portalScreen_green")[0].addEventListener("transitionend", testPortalScreen_3, false);
+	}
+	
+	function testPortalScreen_3(event)
+	{
+		$(".tween-portalScreen_green")[0].removeEventListener("webkitTransitionEnd", testPortalScreen_3, false);
+		$(".tween-portalScreen_green")[0].removeEventListener("transitionend", testPortalScreen_3, false);
+		
+		$("#portalScreen .portalScreen_map-goat .player-sprite").removeClass("tween-player-walkX");
+		$("#portalScreen .portalScreen_map-goat .map-goat-head").removeClass("mapPlayer_head_default").addClass("mapPlayer_head_fear");
+		$("#portalScreen .portalScreen_map-goat .map-goat-legs").removeClass("tween-mapPlayerWalk_loop").addClass("tween-mapPlayerWalk_stop");		
+		
+		$("#portalScreen .portalScreen_header").css("opacity", 1);
+		
+	}
+	
