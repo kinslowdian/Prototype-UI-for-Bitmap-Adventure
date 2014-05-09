@@ -143,9 +143,11 @@
 								trace(PORTAL_TRAVEL);
 								
 								// NEEDS TO BE IN OWN FUNCTION AND CALLED AFTER FADE:
-								level_clear();	
+								// level_clear();	
 								
-								level_init();
+								// level_init();
+								
+								testPortalScreen_0();
 								
 								// portalExit();
 								
@@ -171,7 +173,7 @@
 		
 		else
 		{
-			mapPlayer_spawn(PORTAL_TRAVEL.buildData.block_x, PORTAL_TRAVEL.buildData.block_y, PORTAL_TRAVEL.direction, true);	
+			mapPlayer_spawn(PORTAL_TRAVEL.buildData.block_x, PORTAL_TRAVEL.buildData.block_y, PORTAL_TRAVEL.direction, true); // true;	
 		}
 		
 	}

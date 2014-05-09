@@ -267,7 +267,14 @@
 		
 		level_form();
 		
-		// ADD LATER
+		// ADD LATER - if() COULD BE BUGGY
+		
+/*
+		if(game_introEntrance)
+		{
+			level_player_setup();
+		}
+*/
 		
 		level_player_setup();
 	}
@@ -341,6 +348,26 @@
 				portals_ARR[object_portal].build();	
 			}
 		}
+		
+		// ENEMIES (PRE-READ)
+		
+		if(!enemiesBorn)
+		{
+			enemiesBorn = true;
+			
+			enemyRead();
+		}
+		
+		for(var object_enemy in enemies_ARR)
+		{
+			if(ROM.mapLevel == enemies_ARR[object_enemy].spawn)
+			{
+				if(enemies_ARR[object_enemy].alive)
+				{
+					enemies_ARR[object_enemy].build();
+				}	
+			}	
+		}		
 		
 		html_lib_empty();	
 	}
@@ -424,6 +451,7 @@
 	{
 		$(".field-floor > div").removeAttr("class");
 		
+		$(".enemy-area").html("");
 		$(".portal-area").html("");
 		$(".field-area").html("");
 		

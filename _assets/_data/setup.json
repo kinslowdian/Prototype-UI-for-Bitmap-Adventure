@@ -553,11 +553,12 @@
 					{
 						"x": 0,
 						"y": 9,
-						"w": 1,
-						"h": 1,
-						"n": "level0_griz0",
-						"t": "griz",
+						"w": 0.5,
+						"h": 0.5,
+						"n": "level0_bird0",
+						"t": "bird",
 						"l": 0,
+						"spawn": 0,
 						"head": "BIRD"
 					},
 					
@@ -565,12 +566,13 @@
 					{
 						"x": 3,
 						"y": 9,
-						"w": 1,
-						"h": 1,
-						"n": "level0_griz1",
-						"t": "griz",
+						"w": 0.5,
+						"h": 0.5,
+						"n": "level0_rabbit1",
+						"t": "rabbit",
 						"l": 0,
-						"head": "GRIZ"
+						"spawn": 0,
+						"head": "RABBIT"
 					}		
 				}
 			},
@@ -1055,11 +1057,12 @@
 					{
 						"x": 3,
 						"y": 18,
-						"w": 1,
-						"h": 1,
-						"n": "level1_griz0",
-						"t": "griz",
+						"w": 0.5,
+						"h": 0.5,
+						"n": "level1_bird0",
+						"t": "bird",
 						"l": 0,
+						"spawn": 1,
 						"head": "BIRD"
 					},
 					
@@ -1067,12 +1070,13 @@
 					{
 						"x": 0,
 						"y": 22,
-						"w": 1,
-						"h": 1,
-						"n": "level1_griz1",
-						"t": "griz",
+						"w": 0.5,
+						"h": 0.5,
+						"n": "level1_rabbit1",
+						"t": "rabbit",
 						"l": 0,
-						"head": "GRIZ"
+						"spawn": 1,
+						"head": "RABBIT"
 					}		
 				}
 			},
@@ -1379,11 +1383,12 @@
 					{
 						"x": 1.5,
 						"y": 8,
-						"w": 1,
-						"h": 1,
-						"n": "level2_griz0",
-						"t": "griz",
+						"w": 0.5,
+						"h": 0.5,
+						"n": "level2_bird0",
+						"t": "bird",
 						"l": 0,
+						"spawn": 2,
 						"head": "BIRD"
 					},
 					
@@ -1391,12 +1396,13 @@
 					{
 						"x": 1.5,
 						"y": 16,
-						"w": 1,
-						"h": 1,
-						"n": "level2_griz1",
-						"t": "griz",
+						"w": 0.5,
+						"h": 0.5,
+						"n": "level2_rabbit1",
+						"t": "rabbit",
 						"l": 0,
-						"head": "GRIZ"
+						"spawn": 2,
+						"head": "RABBIT"
 					}			
 				}
 			},
@@ -1728,11 +1734,12 @@
 					{
 						"x": 1.5,
 						"y": 6.5,
-						"w": 1,
-						"h": 1,
-						"n": "level3_griz0",
-						"t": "griz",
+						"w": 0.5,
+						"h": 0.5,
+						"n": "level3_bird0",
+						"t": "bird",
 						"l": 0,
+						"spawn": 3,
 						"head": "BIRD"
 					},
 					
@@ -1740,12 +1747,13 @@
 					{
 						"x": 1,
 						"y": 23,
-						"w": 1,
-						"h": 1,
-						"n": "level3_griz1",
-						"t": "griz",
+						"w": 0.5,
+						"h": 0.5,
+						"n": "level3_rabbit1",
+						"t": "rabbit",
 						"l": 0,
-						"head": "GRIZ"
+						"spawn": 3,
+						"head": "RABBIT"
 					}			
 				}
 			},

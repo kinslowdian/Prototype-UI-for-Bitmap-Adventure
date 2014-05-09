@@ -119,8 +119,20 @@
 			{
 				if(!game_levelChange)
 				{
+					if(portalScreenDisplayed)
+					{
+						portalScreenDisplayed = false;
+						
+						exitFrame = setTimeout(mapPlayer_entry, 100);
+					}
+						
+					else
+					{
+						exitFrame = setTimeout(mapPlayer_entry, 1000);	
+					}
+					
 					// mapPlayer_entry();
-					exitFrame = setTimeout(mapPlayer_entry, 1000);
+					//exitFrame = setTimeout(mapPlayer_entry, 1000);
 					
 					PORTAL_TRAVEL = null;	
 				}
@@ -160,8 +172,20 @@
 		{
 			if(!game_levelChange)
 			{
+				if(portalScreenDisplayed)
+				{
+					portalScreenDisplayed = false;
+					
+					exitFrame = setTimeout(mapPlayer_entry, 100);
+				}
+					
+				else
+				{
+					exitFrame = setTimeout(mapPlayer_entry, 1000);	
+				}
+				
 				// mapPlayer_entry();
-				exitFrame = setTimeout(mapPlayer_entry, 1000);
+				//exitFrame = setTimeout(mapPlayer_entry, 1000);
 				
 				PORTAL_TRAVEL = null;	
 			}

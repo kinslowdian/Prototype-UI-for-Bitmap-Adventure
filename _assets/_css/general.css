@@ -240,7 +240,9 @@
 			
 			.edgeBleed-forest
 			{
-				background: #6bd0ad;				
+				/* background: #6bd0ad; */
+				
+				background: #17e69d;				
 			}
 			
 			#roam_content

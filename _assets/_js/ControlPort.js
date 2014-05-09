@@ -20,7 +20,8 @@
 		MAP_PLAYER.cur_x = 120;
 		MAP_PLAYER.cur_y = 120;
 		MAP_PLAYER.dir = "STILL";
-		MAP_PLAYER.move = 40;
+		MAP_PLAYER.move_default = 40;
+		MAP_PLAYER.move = MAP_PLAYER.move_default;
 		MAP_PLAYER.walking = false;
 		
 		MAP_PLAYER.playerMover 		= playerMover;
@@ -647,12 +648,14 @@
 	
 		if(moveExtra)
 		{
-			MAP_PLAYER.move += MAP_PLAYER.move;
+			// MAP_PLAYER.move += MAP_PLAYER.move;
+			
+			MAP_PLAYER.move = (MAP_PLAYER.move_default * 2);
 		}
 		
 		else
 		{
-			
+			MAP_PLAYER.move = MAP_PLAYER.move_default;
 		}
 	}
 	

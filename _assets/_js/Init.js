@@ -11,6 +11,10 @@
 	
 	var event_htmlLoaded = document.createEvent("Event");
 	
+	var protalScreenHTML = "";
+	var portalScreenDelay;
+	var portalScreenDisplayed = false;
+	
 	event_htmlLoaded.initEvent("EVENT_HTML_LOADED", true, true);
 	
 	function phoneRotate(event)
@@ -128,12 +132,21 @@
 	
 	function testPortalScreenInit()
 	{
-		var t;
-		
-		t = setTimeout(testPortalScreen_0, 3000);
+		protalScreenHTML = $("#portalScreen").html();
+		$("#portalScreen").html("");
 	}
 
 	function testPortalScreen_0()
+	{
+		portalScreenDisplayed = true;
+		
+		$("#portalScreen").html(protalScreenHTML);
+		
+		// EXIT FRAME
+		portalScreenDelay = setTimeout(testPortalScreenRun, 20);
+	}
+	
+	function testPortalScreenRun()
 	{
 		var css;
 		
@@ -145,20 +158,21 @@
 		$("#portalScreen .portalScreen_wrapper").css(css);
 		
 		$(".tween-portalScreen_wrapper")[0].addEventListener("webkitTransitionEnd", testPortalScreen_1, false);
-		$(".tween-portalScreen_wrapper")[0].addEventListener("transitionend", testPortalScreen_1, false);
+		$(".tween-portalScreen_wrapper")[0].addEventListener("transitionend", testPortalScreen_1, false);		
 	}
 	
 	function testPortalScreen_1(event)
 	{
-		var t;
-		
 		$(".tween-portalScreen_wrapper")[0].removeEventListener("webkitTransitionEnd", testPortalScreen_1, false);
 		$(".tween-portalScreen_wrapper")[0].removeEventListener("transitionend", testPortalScreen_1, false);		
 	
 		$("#portalScreen .portalScreen_fade").css("opacity", 0);
 		
-		t = setTimeout(testPortalScreen_2, 2 * 1000);
+		portalScreenDelay = setTimeout(testPortalScreen_2, 2 * 1000);
 		
+		level_clear();
+		
+		level_init();
 	}
 	
 	function testPortalScreen_2()
@@ -187,5 +201,46 @@
 		
 		$("#portalScreen .portalScreen_header").css("opacity", 1);
 		
+		
+		$(".tween-portalScreen_header")[0].addEventListener("webkitTransitionEnd", testPortalScreen_4, false);
+		$(".tween-portalScreen_header")[0].addEventListener("transitionend", testPortalScreen_4, false);
 	}
+	
+	function testPortalScreen_4(event)
+	{
+		$(".tween-portalScreen_header")[0].removeEventListener("webkitTransitionEnd", testPortalScreen_4, false);
+		$(".tween-portalScreen_header")[0].removeEventListener("transitionend", testPortalScreen_4, false);		
+		
+	
+		portalScreenDelay = setTimeout(testPortalScreen_5, 2 * 1000);
+	}
+	
+	function testPortalScreen_5()
+	{
+		var css;
+		
+		css = 	{
+					"-webkit-transform"	: "translateX(100%)",
+					"transform"			: "translateX(100%)"
+				};
+				
+		$("#portalScreen .portalScreen_wrapper").css(css);
+		
+		$(".tween-portalScreen_wrapper")[0].addEventListener("webkitTransitionEnd", testPortalScreen_6, false);
+		$(".tween-portalScreen_wrapper")[0].addEventListener("transitionend", testPortalScreen_6, false);		
+	}
+	
+	function testPortalScreen_6(event)
+	{
+		$(".tween-portalScreen_wrapper")[0].removeEventListener("webkitTransitionEnd", testPortalScreen_6, false);
+		$(".tween-portalScreen_wrapper")[0].removeEventListener("transitionend", testPortalScreen_6, false);
+		
+		$("#portalScreen").html("");
+		
+		level_player_setup();
+		moveStageTest();		
+	}
+	
+	
+	 
 	
