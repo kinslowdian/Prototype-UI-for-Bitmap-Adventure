@@ -1214,6 +1214,8 @@
 		
 		/* background: #ffff66; */
 		
+		pointer-events: none;
+		
 		z-index: 200;
 	}
 	

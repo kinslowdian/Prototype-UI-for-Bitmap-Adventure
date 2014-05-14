@@ -48,7 +48,7 @@
 		if(DISPLAY.screenUpdateUse)
 		{
 			// fix blurring:
-			DISPLAY.center_X		= Math.floor(($("#roam_wrapper").width() - $("#roam_content").width()) * 0.5);
+			DISPLAY.center_X		= Math.floor(($(".stage-main").width() - $(".stage-view-x").width()) * 0.5);
 			
 			DISPLAY.center_y	= 0;
 			
@@ -60,10 +60,10 @@
 						"transform" 		: "translateX(" + x + "px)"
 					};
 				
-			$("#roam_content").css(css_x);
+			$(".stage-view-x").css(css_x);
 			
 			
-			DISPLAY.stageOffset = $("#roam_content").offset().left;
+			DISPLAY.stageOffset = $(".stage-view-x").offset().left;
 			
 			DISPLAY.viewHeight = $(document).height();
 			
