@@ -34,6 +34,8 @@
 		MAP_PLAYER.playerFadeTarget = playerFadeTarget;
 		MAP_PLAYER.hitTestArea 		= hitTestArea;
 		
+		// MAP_PLAYER.playerWalkTweenApplied = false;
+		
 		MAP_PLAYER.playerHead		= "mapPlayer_head_default";
 		MAP_PLAYER.playerHeadCur	= "";
 		 
@@ -764,6 +766,15 @@
 				$("." + MAP_PLAYER.playerFadeTarget).css("opacity", 0);
 			}
 			
+/*
+			if(!MAP_PLAYER.playerWalkTweenApplied)
+			{
+				MAP_PLAYER.playerWalkTweenApplied = true;
+				
+				$("#" + MAP_PLAYER.playerMover + " .player-sprite .map-goat-legs").removeClass(MAP_PLAYER.playerWalkStop).addClass(MAP_PLAYER.playerWalkLoop);
+			}
+*/
+			
 			$("#" + MAP_PLAYER.playerMover + " .player-sprite .map-goat-legs").removeClass(MAP_PLAYER.playerWalkStop).addClass(MAP_PLAYER.playerWalkLoop);
 			
 			
@@ -771,7 +782,21 @@
 			$("." + MAP_PLAYER.playerTween)[0].addEventListener("transitionend", mapPlayer_move_end, false);
 			
 			$("#" + MAP_PLAYER.playerMover).css(css);	
-		}		
+		}
+		
+		// CSS KEYFRAME UPDATE
+		
+/*
+		if(MAP_PLAYER.dir === "STILL")
+		{
+			$("#" + MAP_PLAYER.playerMover + " .player-sprite").removeClass(MAP_PLAYER.playerWalkTween);
+			$("#" + MAP_PLAYER.playerMover + " .player-sprite .map-goat-legs").removeClass(MAP_PLAYER.playerWalkLoop).addClass(MAP_PLAYER.playerWalkStop);			
+			
+			MAP_PLAYER.playerWalkTweenApplied = false;
+		}
+*/
+		
+		// CSS KEYFRAME UPDATE		
 	}
 	
 	function mapPlayer_move_end(event)
@@ -784,10 +809,14 @@
 		
 		MAP_PLAYER.walking = false;
 		
+		// CSS KEYFRAME UPDATE
+		
 		MAP_PLAYER.dir = "STILL";
 		
 		$("#" + MAP_PLAYER.playerMover + " .player-sprite").removeClass(MAP_PLAYER.playerWalkTween);
 		$("#" + MAP_PLAYER.playerMover + " .player-sprite .map-goat-legs").removeClass(MAP_PLAYER.playerWalkLoop).addClass(MAP_PLAYER.playerWalkStop);
+		
+		// CSS KEYFRAME UPDATE
 		
 		if(MAP_PLAYER.placement.enterMap)
 		{
@@ -803,11 +832,23 @@
 		
 		if(HIT_TEST.hit_portal)
 		{
+			// CSS KEYFRAME UPDATE
+			
+			// MAP_PLAYER.dir = "STILL";
+			
+			// CSS KEYFRAME UPDATE
+			
 			gameStateChange("PORTAL");	
 		}
 		
 		if(HIT_TEST.hit_enemy)
 		{
+			// CSS KEYFRAME UPDATE
+			
+			// MAP_PLAYER.dir = "STILL";
+			
+			// CSS KEYFRAME UPDATE
+			
 			gameStateChange("ENEMY");
 		}
 		
@@ -815,6 +856,20 @@
 		{
 			mapPlayer_update();
 		}
+		
+		// CSS KEYFRAME UPDATE
+		
+/*
+		if(MAP_PLAYER.dir === "STILL")
+		{
+			$("#" + MAP_PLAYER.playerMover + " .player-sprite").removeClass(MAP_PLAYER.playerWalkTween);
+			$("#" + MAP_PLAYER.playerMover + " .player-sprite .map-goat-legs").removeClass(MAP_PLAYER.playerWalkLoop).addClass(MAP_PLAYER.playerWalkStop);
+			
+			MAP_PLAYER.playerWalkTweenApplied = false;			
+		}
+*/
+		
+		// CSS KEYFRAME UPDATE
 		
 		moveStageTest();
 	}

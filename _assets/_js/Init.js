@@ -89,7 +89,13 @@
 		
 		display_init();
 		
-		mapPlayer_init("player-block", "tween-player-block", "tween-player-walkX", "tween-player-walkY", "tween-mapPlayerWalk_stop", "tween-mapPlayerWalk_loop", "map-goat", "preHitTest");
+		// CSS KEYFRAME UPDATE
+		
+		// mapPlayer_init("player-block", "tween-player-block", "tween-player-walkX", "tween-player-walkY", "tween-mapPlayerWalk_stop", "tween-mapPlayerWalk_loop", "map-goat", "preHitTest");
+		
+		mapPlayer_init("player-block", "tween-player-block", "tween-player-walkX", "tween-player-walkY", "tween-mapPlayerWalk_stop", "tween-mapPlayerWalk_play", "map-goat", "preHitTest");
+		
+		// CSS KEYFRAME UPDATE
 		
 		level_init();
 	
