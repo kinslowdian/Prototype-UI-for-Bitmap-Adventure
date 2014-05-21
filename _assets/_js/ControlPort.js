@@ -759,7 +759,7 @@
 		
 		else
 		{
-			$("#" + MAP_PLAYER.playerMover + " .player-sprite").addClass(MAP_PLAYER.playerWalkTween);
+			$("#" + MAP_PLAYER.playerMover + " .player-sprite ." + MAP_PLAYER.playerWalkTween).removeClass(MAP_PLAYER.playerWalkStop).addClass(MAP_PLAYER.playerWalkLoop);
 			
 			if(HIT_TEST.hit_portal)
 			{
@@ -813,7 +813,7 @@
 		
 		MAP_PLAYER.dir = "STILL";
 		
-		$("#" + MAP_PLAYER.playerMover + " .player-sprite").removeClass(MAP_PLAYER.playerWalkTween);
+		$("#" + MAP_PLAYER.playerMover + " .player-sprite ." + MAP_PLAYER.playerWalkTween).removeClass(MAP_PLAYER.playerWalkLoop).addClass(MAP_PLAYER.playerWalkStop);
 		$("#" + MAP_PLAYER.playerMover + " .player-sprite .map-goat-legs").removeClass(MAP_PLAYER.playerWalkLoop).addClass(MAP_PLAYER.playerWalkStop);
 		
 		// CSS KEYFRAME UPDATE

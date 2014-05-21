@@ -376,6 +376,12 @@
 */			
 			}
 			
+			.player-sprite .player-sprite-x, .player-sprite .player-sprite-y
+			{
+				width: inherit;
+				height: inherit;				
+			}
+			
 			/* #player-block  *//* .map-goat */ .player-sprite .map-goat-head
 			{
 				width: inherit;
@@ -523,8 +529,8 @@
 			
 			.tween-mapPlayerWalk_loop
 			{
-				-webkit-animation	: tweenMapPlayerWalkLoopFrames 0.2s steps(8) 0 infinite;
-				animation			: tweenMapPlayerWalkLoopFrames 0.2s steps(8) 0 infinite;
+				-webkit-animation	: tweenMapPlayerWalkLoopFrames 0.18s steps(8) 0 infinite;
+				animation			: tweenMapPlayerWalkLoopFrames 0.18s steps(8) 0 infinite;
 			}
 			
 /*

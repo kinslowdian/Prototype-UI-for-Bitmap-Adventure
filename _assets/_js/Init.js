@@ -201,9 +201,9 @@
 		$(".tween-portalScreen_green")[0].removeEventListener("webkitTransitionEnd", testPortalScreen_3, false);
 		$(".tween-portalScreen_green")[0].removeEventListener("transitionend", testPortalScreen_3, false);
 		
-		$("#portalScreen .portalScreen_map-goat .player-sprite").removeClass("tween-player-walkX");
+		$("#portalScreen .portalScreen_map-goat .player-sprite .tween-player-walkX").removeClass("tween-mapPlayerWalk_play").addClass("tween-mapPlayerWalk_stop");	
 		$("#portalScreen .portalScreen_map-goat .map-goat-head").removeClass("mapPlayer_head_default").addClass("mapPlayer_head_fear");
-		$("#portalScreen .portalScreen_map-goat .map-goat-legs").removeClass("tween-mapPlayerWalk_loop").addClass("tween-mapPlayerWalk_stop");		
+		$("#portalScreen .portalScreen_map-goat .map-goat-legs").removeClass("tween-mapPlayerWalk_play").addClass("tween-mapPlayerWalk_stop");		
 		
 		$("#portalScreen .portalScreen_header").css("opacity", 1);
 		
