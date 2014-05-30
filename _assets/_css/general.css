@@ -376,12 +376,6 @@
 */			
 			}
 			
-			.player-sprite .player-sprite-x, .player-sprite .player-sprite-y
-			{
-				width: inherit;
-				height: inherit;				
-			}
-			
 			/* #player-block  *//* .map-goat */ .player-sprite .map-goat-head
 			{
 				width: inherit;
@@ -529,27 +523,13 @@
 			
 			.tween-mapPlayerWalk_loop
 			{
-				-webkit-animation	: tweenMapPlayerWalkLoopFrames 0.18s steps(8) 0 infinite;
-				animation			: tweenMapPlayerWalkLoopFrames 0.18s steps(8) 0 infinite;
+				-webkit-animation	: tweenMapPlayerWalkLoopFrames 0.12s steps(8) 0 infinite;
+				animation			: tweenMapPlayerWalkLoopFrames 0.12s steps(8) 0 infinite;
 			}
 			
-/*
 			.tween-mapPlayerWalk_stop
 			{
 				background-position: 0 -80px;
-			}
-*/
-			
-			.tween-mapPlayerWalk_stop
-			{
-				-webkit-animation-play-state: paused;
-				animation-play-state: paused;
-			}
-			
-			.tween-mapPlayerWalk_play
-			{
-				-webkit-animation-play-state: running;
-				animation-play-state: running;
 			}
 			
 			@-webkit-keyframes tweenMapPlayerWalkLoopFrames
@@ -567,7 +547,7 @@
 			.tween-player-walkX
 			{
 				-webkit-animation	: tweenPlayerWalkX_Frames 0.24s linear infinite; /* 0.6s */
-				animation			: tweenPlayerWalkX_Frames 0.24s linear infinite; /* 0.6s */		
+				animation			: tweenPlayerWalkX_Frames 0.24s linear infinite; /* 0.6s */			
 			}
 			
 			@-webkit-keyframes tweenPlayerWalkX_Frames
